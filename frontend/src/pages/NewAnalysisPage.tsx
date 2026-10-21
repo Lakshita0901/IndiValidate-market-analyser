@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   Sparkles,
   ChevronDown,
@@ -17,15 +17,24 @@ import {
   AnalyzeRequest,
   FounderContext,
   GeographicScope,
+  MarketValidationReport,
+  PageId,
   PricingModel,
   ValidationStage
 } from '../types';
+import { AnalysisResults } from '../components/AnalysisResults';
 
 interface NewAnalysisPageProps {
   onSubmit: (request: AnalyzeRequest) => void;
   isLoading: boolean;
   errorMessage: string | null;
   onClearError: () => void;
+  // Inline result state passed from App.tsx
+  lastResult?: MarketValidationReport | null;
+  lastSubmittedIdea?: string | null;
+  lastSubmittedGeography?: string | null;
+  onViewFullReport?: (page: PageId) => void;
+  onClearResult?: () => void;
 }
 
 export const NewAnalysisPage: React.FC<NewAnalysisPageProps> = ({
@@ -33,7 +42,13 @@ export const NewAnalysisPage: React.FC<NewAnalysisPageProps> = ({
   isLoading,
   errorMessage,
   onClearError,
+  lastResult,
+  lastSubmittedIdea,
+  lastSubmittedGeography,
+  onViewFullReport,
+  onClearResult,
 }) => {
+  const formRef = useRef<HTMLDivElement>(null);
   // Primary Idea Input
   const [idea, setIdea] = useState(
     'Smart EV fleet charging hub and reservation software in Ahmedabad with peak-shaving power storage'
@@ -137,20 +152,27 @@ export const NewAnalysisPage: React.FC<NewAnalysisPageProps> = ({
     setConcurrency(3);
     setValidationError(null);
     onClearError();
+    // Clear previous inline results so the user sees a fresh form
+    onClearResult?.();
+    // Scroll back to top of form
+    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
     <div className="max-w-4xl mx-auto space-y-8 animate-fadeIn">
       {/* Title Header */}
-      <div>
+      <div ref={formRef}>
         <h1 className="text-[30px] font-extrabold text-[#302629] tracking-tight leading-tight">
-          Configure Market Validation Analysis
+          {lastResult ? 'Analysis Results' : 'Configure Market Validation Analysis'}
         </h1>
         <p className="text-sm text-[#78696B] mt-1">
-          Specify your market concept and optional founder intake assumptions to generate and stress-test 10 synthetic customer archetypes.
+          {lastResult
+            ? 'Your analysis is complete. Review results below or start a new analysis.'
+            : 'Specify your market concept and optional founder intake assumptions to generate and stress-test synthetic customer archetypes.'}
         </p>
       </div>
 
+      {/* ── Input Form (always visible, acts as reset anchor) ── */}
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Main Card: Idea Input */}
         <div className="bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl p-6 sm:p-7 shadow-xs space-y-4">
@@ -529,6 +551,17 @@ export const NewAnalysisPage: React.FC<NewAnalysisPageProps> = ({
           </button>
         </div>
       </form>
+
+      {/* ── Inline Analysis Results ── */}
+      {lastResult && lastSubmittedIdea && (
+        <AnalysisResults
+          report={lastResult}
+          submittedIdea={lastSubmittedIdea}
+          submittedGeography={lastSubmittedGeography ?? null}
+          onViewFullReport={(page: PageId) => onViewFullReport?.(page)}
+          onNewAnalysis={handleReset}
+        />
+      )}
     </div>
   );
 };

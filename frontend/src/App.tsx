@@ -14,6 +14,11 @@ import { AnalyzeRequest, MarketValidationReport, PageId, PersonaProfile } from '
 import { analyzeMarketIdea, checkBackendHealth } from './services/api';
 import { SAMPLE_MARKET_REPORT } from './data/sampleReport';
 
+interface SubmittedRequest {
+  idea: string;
+  geography: string | null;
+}
+
 const STORAGE_KEY = 'indivalidate_active_report';
 
 // The dashboard shell — all app pages live inside this
@@ -37,6 +42,9 @@ const DashboardShell: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isOpenMobile, setIsOpenMobile] = useState<boolean>(false);
   const [activeModalPersona, setActiveModalPersona] = useState<PersonaProfile | null>(null);
+  // Inline results for NewAnalysisPage — cleared on new submission to prevent stale display
+  const [lastAnalysisResult, setLastAnalysisResult] = useState<MarketValidationReport | null>(null);
+  const [lastSubmittedRequest, setLastSubmittedRequest] = useState<SubmittedRequest | null>(null);
 
   const abortControllerRef = useRef<AbortController | null>(null);
 
@@ -74,6 +82,9 @@ const DashboardShell: React.FC = () => {
     setActiveIdeaText(request.idea);
     setIsAnalysisRunning(true);
     setErrorMessage(null);
+    // Clear any previous inline result so stale data is never shown for new idea
+    setLastAnalysisResult(null);
+    setLastSubmittedRequest(null);
     setActivePage('progress');
 
     const controller = new AbortController();
@@ -88,11 +99,18 @@ const DashboardShell: React.FC = () => {
         // localStorage quota full or disabled
       }
       setIsAnalysisRunning(false);
-      setActivePage('overview');
+      // Extract geography from founder_context if provided
+      const geo = request.founder_context?.launch_geography ?? null;
+      setLastSubmittedRequest({ idea: request.idea, geography: geo });
+      setLastAnalysisResult(newReport);
+      // Stay on new-analysis so the user can see inline results
+      setActivePage('new-analysis');
     } catch (err: unknown) {
       setIsAnalysisRunning(false);
       const msg = err instanceof Error ? err.message : 'Unknown pipeline error occurred';
       setErrorMessage(msg);
+      // Return to new-analysis so error is shown with retained idea
+      setActivePage('new-analysis');
     } finally {
       abortControllerRef.current = null;
     }
@@ -162,6 +180,14 @@ const DashboardShell: React.FC = () => {
               isLoading={isAnalysisRunning}
               errorMessage={errorMessage}
               onClearError={() => setErrorMessage(null)}
+              lastResult={lastAnalysisResult}
+              lastSubmittedIdea={lastSubmittedRequest?.idea ?? null}
+              lastSubmittedGeography={lastSubmittedRequest?.geography ?? null}
+              onViewFullReport={setActivePage}
+              onClearResult={() => {
+                setLastAnalysisResult(null);
+                setLastSubmittedRequest(null);
+              }}
             />
           )}
 
