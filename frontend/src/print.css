@@ -1,11 +1,12 @@
 /* ==========================================================================
    IndiValidate — Dedicated Print Stylesheet
-   Targets standard A4 paper, full-width content, and professional print/PDF layout.
+   Targets standard A4 paper, full-width content, and professional executive print/PDF.
+   Ensures text is crisp white on sleek dark cards (no washed-out blue or dark text).
    ========================================================================== */
 
 @page {
   size: A4 portrait;
-  margin: 12mm 12mm 14mm 12mm;
+  margin: 10mm 10mm 12mm 10mm;
 }
 
 @media print {
@@ -25,13 +26,13 @@
   }
 
   /* -------------------------------------------------------------------------
-     2. Reset global document canvas & root layout
+     2. Dark Canvas & Root Layout (matching IndiValidate executive aesthetic)
      ------------------------------------------------------------------------- */
   html,
   body {
-    background-color: #ffffff !important;
-    background: #ffffff !important;
-    color: #0f172a !important;
+    background-color: #0D1012 !important;
+    background: #0D1012 !important;
+    color: #ffffff !important;
     font-size: 10pt !important;
     line-height: 1.45 !important;
     width: 100% !important;
@@ -46,22 +47,22 @@
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    background: #ffffff !important;
+    background-color: #0D1012 !important;
+    background: #0D1012 !important;
   }
 
-  /* Neutralize dark-theme dashboard wrapper */
+  /* Neutralize dashboard sidebar margins on main area */
   .dash-root {
     display: block !important;
     min-height: auto !important;
-    background-color: #ffffff !important;
-    background: #ffffff !important;
-    color: #0f172a !important;
+    background-color: #0D1012 !important;
+    background: #0D1012 !important;
+    color: #ffffff !important;
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
   }
 
-  /* Remove sidebar margin/padding on main area (overriding lg:pl-64) */
   .dash-root > div,
   .dash-root .lg\:pl-64,
   div[class*="lg:pl-64"] {
@@ -69,7 +70,8 @@
     margin-left: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
-    background: #ffffff !important;
+    background-color: #0D1012 !important;
+    background: #0D1012 !important;
   }
 
   .dash-root main {
@@ -77,7 +79,8 @@
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    background: #ffffff !important;
+    background-color: #0D1012 !important;
+    background: #0D1012 !important;
   }
 
   /* -------------------------------------------------------------------------
@@ -88,6 +91,7 @@
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
+    background-color: #0D1012 !important;
   }
 
   /* -------------------------------------------------------------------------
@@ -96,8 +100,8 @@
   .report-header-card {
     display: block !important;
     width: 100% !important;
-    background-color: #ffffff !important;
-    border: 1.5px solid #cbd5e1 !important;
+    background-color: #171B20 !important;
+    border: 1.5px solid #2B3138 !important;
     border-radius: 8px !important;
     box-shadow: none !important;
     padding: 14px 18px !important;
@@ -110,7 +114,7 @@
     font-size: 19pt !important;
     font-weight: 800 !important;
     line-height: 1.25 !important;
-    color: #0f172a !important;
+    color: #ffffff !important;
     width: 100% !important;
     max-width: 100% !important;
     word-break: break-word !important;
@@ -121,90 +125,98 @@
   }
 
   /* -------------------------------------------------------------------------
-     5. Color overrides: Neutralize dark-theme classes for light print
+     5. Crisp White Text Overrides (Never Blue, Slate, or Dark)
      ------------------------------------------------------------------------- */
-  /* Text colors */
   .dash-root,
   .dash-root [class*="text-[#302629]"],
-  .dash-root [class*="text-[#F5F5F5]"] {
-    color: #0f172a !important;
+  .dash-root [class*="text-[#F5F5F5]"],
+  .report-page-container,
+  .report-page-container h1,
+  .report-page-container h2,
+  .report-page-container h3,
+  .report-page-container h4,
+  .report-page-container p,
+  .report-page-container span,
+  .report-page-container li,
+  .report-page-container div,
+  .report-page-container strong,
+  .report-page-container b {
+    color: #ffffff !important;
   }
 
+  /* Secondary / muted labels in crisp readable silver-white */
   .dash-root [class*="text-[#78696B]"],
   .dash-root [class*="text-[#7E8995]"],
-  .dash-root [class*="text-[#A0AAB5]"] {
-    color: #475569 !important;
+  .dash-root [class*="text-[#A0AAB5]"],
+  .report-page-container [class*="text-[#78696B]"],
+  .report-page-container [class*="text-[#7E8995]"],
+  .report-page-container [class*="text-[#A0AAB5]"] {
+    color: #cbd5e1 !important;
   }
 
-  .dash-root h1,
-  .dash-root h2,
-  .dash-root h3,
-  .dash-root h4 {
-    color: #0f172a !important;
-  }
-
-  /* Status accent text */
+  /* Status semantic colors with high brightness against dark background */
   .dash-root [class*="text-[#3E7B54]"],
-  .dash-root [class*="text-[#2F6342]"] {
-    color: #15803d !important;
+  .dash-root [class*="text-[#2F6342]"],
+  .report-page-container [class*="text-[#3E7B54]"],
+  .report-page-container [class*="text-[#2F6342]"] {
+    color: #4ade80 !important; /* Emerald green */
   }
 
   .dash-root [class*="text-[#C06E22]"],
-  .dash-root [class*="text-[#9B5515]"] {
-    color: #b45309 !important;
+  .dash-root [class*="text-[#9B5515]"],
+  .report-page-container [class*="text-[#C06E22]"],
+  .report-page-container [class*="text-[#9B5515]"] {
+    color: #fbbf24 !important; /* Amber / gold */
   }
 
   .dash-root [class*="text-[#873F46]"],
-  .dash-root [class*="text-[#F43F4F]"] {
-    color: #991b1b !important;
+  .dash-root [class*="text-[#F43F4F]"],
+  .report-page-container [class*="text-[#873F46]"],
+  .report-page-container [class*="text-[#F43F4F]"] {
+    color: #f87171 !important; /* Rose / red */
   }
 
-  /* Surface backgrounds */
+  /* -------------------------------------------------------------------------
+     6. Surface Backgrounds & Borders
+     ------------------------------------------------------------------------- */
   .dash-root .bg-white,
   .dash-root [class*="bg-[#FFFFFF]"],
   .dash-root [class*="bg-[#101316]"],
   .dash-root [class*="bg-[#0D1012]"],
-  .dash-root [class*="bg-[#171B20]"] {
-    background-color: #ffffff !important;
+  .dash-root [class*="bg-[#171B20]"],
+  .report-section-card {
+    background-color: #171B20 !important;
+    border-color: #2B3138 !important;
   }
 
   .dash-root [class*="bg-[#F7F4F2]"],
   .dash-root [class*="bg-[#1D2228]"] {
-    background-color: #f8fafc !important;
+    background-color: #1a1f26 !important;
+    border-color: #2B3138 !important;
   }
 
   .dash-root [class*="bg-[#FAF5F4]"],
   .dash-root [class*="bg-[#FAF2EA]"] {
-    background-color: #fffbeb !important;
+    background-color: rgba(245, 158, 11, 0.12) !important;
+    border-color: rgba(245, 158, 11, 0.28) !important;
   }
 
   .dash-root [class*="bg-[#EDF6F0]"],
   .dash-root [class*="bg-[#E0EFE5]"] {
-    background-color: #f0fdf4 !important;
+    background-color: rgba(16, 185, 129, 0.12) !important;
+    border-color: rgba(16, 185, 129, 0.28) !important;
   }
 
   .dash-root [class*="bg-[#F4E9E7]"] {
-    background-color: #fef2f2 !important;
+    background-color: rgba(239, 68, 68, 0.12) !important;
+    border-color: rgba(239, 68, 68, 0.28) !important;
   }
 
   /* Borders */
   .dash-root [class*="border-[#E7DAD8]"],
   .dash-root [class*="border-[#2B3138]"],
   .dash-root [class*="border-[#1D2228]"] {
-    border-color: #e2e8f0 !important;
-  }
-
-  .dash-root [class*="border-[#3E7B54]"] {
-    border-color: #86efac !important;
-  }
-
-  .dash-root [class*="border-[#C06E22]"] {
-    border-color: #fde68a !important;
-  }
-
-  .dash-root [class*="border-[#873F46]"],
-  .dash-root [class*="border-[#B66B70]"] {
-    border-color: #fca5a5 !important;
+    border-color: #2B3138 !important;
   }
 
   /* Remove shadows */
@@ -214,27 +226,28 @@
   }
 
   /* -------------------------------------------------------------------------
-     6. Section structure and pagination rules
+     7. Section Structure and Pagination Rules
      ------------------------------------------------------------------------- */
   .report-section-card {
-    border: 1px solid #cbd5e1 !important;
+    border: 1px solid #2B3138 !important;
     border-radius: 8px !important;
-    background-color: #ffffff !important;
+    background-color: #171B20 !important;
     margin-bottom: 14px !important;
     box-shadow: none !important;
-    break-inside: auto !important; /* Allow multi-page sections to flow */
+    break-inside: auto !important;
     page-break-inside: auto !important;
   }
 
   .report-section-header {
-    background-color: #f8fafc !important;
-    border-bottom: 1px solid #cbd5e1 !important;
+    background-color: #1D2228 !important;
+    border-bottom: 1px solid #2B3138 !important;
     padding: 10px 16px !important;
     cursor: default !important;
     break-after: avoid !important;
     page-break-after: avoid !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
+    color: #ffffff !important;
   }
 
   /* Force all section bodies to show during print even if collapsed on screen */
@@ -252,6 +265,7 @@
   h1, h2, h3, h4, .report-section-header {
     break-after: avoid !important;
     page-break-after: avoid !important;
+    color: #ffffff !important;
   }
 
   /* Avoid splitting compact cards & findings across page breaks */
@@ -272,8 +286,8 @@
   /* Code elements in print */
   code {
     font-size: 8.5pt !important;
-    border: 1px solid #cbd5e1 !important;
-    background-color: #f1f5f9 !important;
-    color: #334155 !important;
+    border: 1px solid #334155 !important;
+    background-color: #1e242c !important;
+    color: #f1f5f9 !important;
   }
 }

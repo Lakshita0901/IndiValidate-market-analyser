@@ -10,7 +10,7 @@ import { MarketInsightsPage } from './pages/MarketInsightsPage';
 import { ReportsPage } from './pages/ReportsPage';
 import { PersonaDetailModal } from './components/PersonaDetailModal';
 import { LandingPage } from './pages/LandingPage';
-import { AnalyzeRequest, MarketValidationReport, PageId, PersonaProfile } from './types';
+import { AnalyzeRequest, AnalysisRunRecord, AnalysisRunStatus, MarketValidationReport, PageId, PersonaProfile } from './types';
 import { analyzeMarketIdea, checkBackendHealth } from './services/api';
 import { SAMPLE_MARKET_REPORT } from './data/sampleReport';
 
@@ -20,6 +20,29 @@ interface SubmittedRequest {
 }
 
 const STORAGE_KEY = 'indivalidate_active_report';
+const HISTORY_STORAGE_KEY = 'indivalidate_analysis_history';
+
+const createRunRecordFromReport = (rep: MarketValidationReport, runStatus: AnalysisRunStatus = 'completed'): AnalysisRunRecord => {
+  const cov = rep.evidence_coverage_audit;
+  const targetLoc =
+    typeof rep.idea_and_context?.target_geography?.location === 'string'
+      ? rep.idea_and_context.target_geography.location
+      : typeof rep.idea_and_context?.target_geography?.city === 'string'
+      ? rep.idea_and_context.target_geography.city
+      : null;
+
+  return {
+    id: rep.report_id || `MVR-${Date.now().toString(36).toUpperCase()}`,
+    idea: rep.idea_and_context?.business_idea || 'Market Validation Analysis',
+    geography: targetLoc,
+    timestamp: rep.generated_at || new Date().toISOString(),
+    status: runStatus,
+    evidenceCoverageRatio: cov?.evidence_coverage_ratio ?? -1,
+    supportedFindingsCount: cov?.supported_count ?? 0,
+    totalFindingsCount: cov?.total_findings_evaluated ?? 0,
+    report: rep,
+  };
+};
 
 // The dashboard shell — all app pages live inside this
 const DashboardShell: React.FC = () => {
@@ -34,6 +57,35 @@ const DashboardShell: React.FC = () => {
       // Fallback
     }
     return SAMPLE_MARKET_REPORT;
+  });
+
+  const [history, setHistory] = useState<AnalysisRunRecord[]>(() => {
+    try {
+      const savedHistory = localStorage.getItem(HISTORY_STORAGE_KEY);
+      if (savedHistory) {
+        const parsed = JSON.parse(savedHistory);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch {
+      // Ignored
+    }
+    // Seed with initial report if available
+    const initialReport = (() => {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) return JSON.parse(saved);
+      } catch {
+        // Ignored
+      }
+      return SAMPLE_MARKET_REPORT;
+    })();
+
+    if (initialReport) {
+      return [createRunRecordFromReport(initialReport, 'completed')];
+    }
+    return [];
   });
 
   const [isBackendOnline, setIsBackendOnline] = useState<boolean | null>(null);
@@ -98,6 +150,23 @@ const DashboardShell: React.FC = () => {
       } catch {
         // localStorage quota full or disabled
       }
+      // Track in historical runs
+      const issues = (newReport.diagnostics?.issues as unknown[]) || [];
+      const runRecord = createRunRecordFromReport(
+        newReport,
+        issues.length > 0 ? 'completed_with_failures' : 'completed'
+      );
+      setHistory((prev) => {
+        const filtered = prev.filter((item) => item.id !== runRecord.id);
+        const updated = [runRecord, ...filtered].slice(0, 20);
+        try {
+          localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(updated));
+        } catch {
+          // Ignored
+        }
+        return updated;
+      });
+
       setIsAnalysisRunning(false);
       // Extract geography from founder_context if provided
       const geo = request.founder_context?.launch_geography ?? null;
@@ -109,6 +178,29 @@ const DashboardShell: React.FC = () => {
       setIsAnalysisRunning(false);
       const msg = err instanceof Error ? err.message : 'Unknown pipeline error occurred';
       setErrorMessage(msg);
+
+      // Track failed run in history
+      const failedRecord: AnalysisRunRecord = {
+        id: `MVR-ERR-${Date.now().toString(36).toUpperCase()}`,
+        idea: request.idea,
+        geography: request.founder_context?.launch_geography ?? null,
+        timestamp: new Date().toISOString(),
+        status: 'failed',
+        evidenceCoverageRatio: -1,
+        supportedFindingsCount: 0,
+        totalFindingsCount: 0,
+        report: null,
+      };
+      setHistory((prev) => {
+        const updated = [failedRecord, ...prev].slice(0, 20);
+        try {
+          localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(updated));
+        } catch {
+          // Ignored
+        }
+        return updated;
+      });
+
       // Return to new-analysis so error is shown with retained idea
       setActivePage('new-analysis');
     } finally {
@@ -136,8 +228,29 @@ const DashboardShell: React.FC = () => {
     } catch {
       // Ignored
     }
+    const sampleRecord = createRunRecordFromReport(SAMPLE_MARKET_REPORT, 'completed');
+    setHistory((prev) => {
+      const filtered = prev.filter((item) => item.id !== sampleRecord.id);
+      const updated = [sampleRecord, ...filtered].slice(0, 20);
+      try {
+        localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(updated));
+      } catch {
+        // Ignored
+      }
+      return updated;
+    });
     setErrorMessage(null);
     setActivePage('overview');
+  };
+
+  const handleSelectReport = (selectedReport: MarketValidationReport) => {
+    setReport(selectedReport);
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(selectedReport));
+    } catch {
+      // Ignored
+    }
+    setActivePage('reports');
   };
 
   return (
@@ -170,7 +283,11 @@ const DashboardShell: React.FC = () => {
               onNavigate={setActivePage}
               onQuickStart={handleQuickStart}
               onLoadSample={handleLoadSample}
-              onSelectPersona={(persona) => setActiveModalPersona(persona)}
+              isAnalysisRunning={isAnalysisRunning}
+              activeIdeaText={activeIdeaText}
+              errorMessage={errorMessage}
+              history={history}
+              onSelectReport={handleSelectReport}
             />
           )}
 

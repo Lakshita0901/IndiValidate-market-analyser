@@ -272,3 +272,17 @@ export interface PersonaProfile {
   };
   price_is_conditional?: boolean;
 }
+
+export type AnalysisRunStatus = 'completed' | 'completed_with_failures' | 'failed' | 'running';
+
+export interface AnalysisRunRecord {
+  id: string;
+  idea: string;
+  geography?: string | null;
+  timestamp: string;
+  status: AnalysisRunStatus;
+  evidenceCoverageRatio: number;
+  supportedFindingsCount: number;
+  totalFindingsCount: number;
+  report?: MarketValidationReport | null;
+}
