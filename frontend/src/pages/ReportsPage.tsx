@@ -233,15 +233,18 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({
   };
 
   return (
-    <div className="space-y-8 max-w-5xl mx-auto animate-fadeIn">
+    <div className="report-page-container space-y-8 max-w-5xl mx-auto animate-fadeIn print:space-y-4 print:max-w-none print:w-full print:m-0 print:p-0">
       {/* Report Header Bar */}
-      <div className="bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl p-6 sm:p-7 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-5">
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="font-mono text-xs font-bold bg-[#F4E9E7] text-[#873F46] px-3 py-1 rounded-full border border-[#B66B70]/20">
+      <div className="report-header-card bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl p-6 sm:p-7 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-5 print:rounded-lg print:border-slate-300 print:shadow-none print:p-5 print:mb-4">
+        <div className="flex-1 min-w-0">
+          <div className="hidden print:block text-[11px] font-bold uppercase tracking-wider text-[#78696B] mb-1">
+            IndiValidate • Market Validation Audit Report
+          </div>
+          <div className="flex items-center gap-2 mb-2 print:mb-1.5 flex-wrap">
+            <span className="font-mono text-xs font-bold bg-[#F4E9E7] text-[#873F46] px-3 py-1 rounded-full border border-[#B66B70]/20 print:bg-slate-100 print:text-slate-800 print:border-slate-300">
               {report.report_id}
             </span>
-            <span className="text-xs text-[#78696B]">
+            <span className="text-xs text-[#78696B] print:text-slate-600">
               Generated: {(() => {
                 if (!report.generated_at) return 'Recent Session';
                 const d = new Date(report.generated_at);
@@ -249,13 +252,13 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({
               })()}
             </span>
           </div>
-          <h1 className="text-[28px] sm:text-[32px] font-extrabold text-[#302629] leading-tight">
+          <h1 className="report-header-title text-[28px] sm:text-[32px] font-extrabold text-[#302629] leading-tight break-words print:text-[22px] print:leading-snug print:text-slate-900">
             {report.idea_and_context?.business_idea}
           </h1>
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-wrap items-center gap-2 shrink-0">
+        <div className="flex flex-wrap items-center gap-2 shrink-0 print:hidden">
           <button
             onClick={handleCopyMarkdown}
             className="px-3.5 py-2 border border-[#E7DAD8] hover:bg-[#F7F4F2] text-[#302629] rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors shadow-2xs"
@@ -288,42 +291,44 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({
       </div>
 
       {/* Expand/Collapse Controls */}
-      <div className="flex justify-end gap-2 text-xs font-bold text-[#78696B]">
+      <div className="flex justify-end gap-2 text-xs font-bold text-[#78696B] print:hidden">
         <button onClick={expandAll} className="hover:text-[#873F46] transition-colors">Expand All</button>
         <span>•</span>
         <button onClick={collapseAll} className="hover:text-[#873F46] transition-colors">Collapse All</button>
       </div>
 
       {/* Structured Sections */}
-      <div className="space-y-5">
+      <div className="space-y-5 print:space-y-3.5">
         {/* Section 1: Executive Summary */}
-        <div className="bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl overflow-hidden shadow-xs">
+        <div className="report-section-card bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl overflow-hidden shadow-xs print:rounded-lg print:border-slate-300 print:shadow-none print:mb-4">
           <button
             onClick={() => toggleSection('exec')}
-            className="w-full px-7 py-5 flex items-center justify-between text-left hover:bg-[#F7F4F2]/50 transition-colors border-b border-[#E7DAD8]"
+            className="report-section-header w-full px-7 py-5 flex items-center justify-between text-left hover:bg-[#F7F4F2]/50 transition-colors border-b border-[#E7DAD8] print:bg-slate-50 print:border-slate-300 print:px-5 print:py-3 print:cursor-default"
           >
             <div className="flex items-center gap-3">
-              <span className="w-7 h-7 rounded-xl bg-[#F4E9E7] text-[#873F46] text-xs font-bold flex items-center justify-center">1</span>
-              <h2 className="text-[22px] font-bold text-[#302629]">Executive Briefing &amp; Next Steps</h2>
+              <span className="w-7 h-7 rounded-xl bg-[#F4E9E7] text-[#873F46] text-xs font-bold flex items-center justify-center print:bg-slate-200 print:text-slate-800">1</span>
+              <h2 className="text-[22px] font-bold text-[#302629] print:text-lg print:text-slate-900">Executive Briefing &amp; Next Steps</h2>
             </div>
-            {openSections.exec ? <ChevronUp className="w-5 h-5 text-[#78696B]" /> : <ChevronDown className="w-5 h-5 text-[#78696B]" />}
+            <div className="print:hidden">
+              {openSections.exec ? <ChevronUp className="w-5 h-5 text-[#78696B]" /> : <ChevronDown className="w-5 h-5 text-[#78696B]" />}
+            </div>
           </button>
 
-          {openSections.exec && report.executive_summary && (
-            <div className="p-7 space-y-6">
+          {report.executive_summary && (
+            <div className={`report-section-content p-7 space-y-6 print:p-5 print:space-y-4 ${openSections.exec ? 'block' : 'hidden print:block'}`}>
               {/* Executive Summary Paragraphs (16-18px body text) */}
-              <div className="text-base sm:text-[17px] text-[#302629] leading-relaxed space-y-4">
+              <div className="text-base sm:text-[17px] text-[#302629] leading-relaxed space-y-4 print:text-[14px]">
                 <p>{report.executive_summary.idea_description}</p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2 print:gap-3.5">
                 {/* Promising signals */}
-                <div className="bg-[#F7F4F2] rounded-xl p-5 border border-[#E7DAD8]">
-                  <h3 className="text-lg font-bold text-[#3E7B54] mb-3 flex items-center gap-2">
+                <div className="print-avoid-break bg-[#F7F4F2] rounded-xl p-5 border border-[#E7DAD8] print:bg-slate-50 print:border-slate-200 print:p-4">
+                  <h3 className="text-lg font-bold text-[#3E7B54] mb-3 flex items-center gap-2 print:text-base">
                     <CheckCircle2 size={18} />
                     Promising Signals
                   </h3>
-                  <ul className="space-y-2 text-sm sm:text-[15px] text-[#302629]">
+                  <ul className="space-y-2 text-sm sm:text-[15px] text-[#302629] print:text-xs">
                     {(report.executive_summary.strongest_promising_signals || []).map((sig, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <span className="text-[#3E7B54] font-bold">•</span>
@@ -334,12 +339,12 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({
                 </div>
 
                 {/* Key Risks */}
-                <div className="bg-[#FAF2EA]/50 rounded-xl p-5 border border-[#C06E22]/30">
-                  <h3 className="text-lg font-bold text-[#C06E22] mb-3 flex items-center gap-2">
+                <div className="print-avoid-break bg-[#FAF2EA]/50 rounded-xl p-5 border border-[#C06E22]/30 print:bg-amber-50/50 print:border-amber-200 print:p-4">
+                  <h3 className="text-lg font-bold text-[#C06E22] mb-3 flex items-center gap-2 print:text-base">
                     <AlertTriangle size={18} />
                     Key Risks &amp; Barriers
                   </h3>
-                  <ul className="space-y-2 text-sm sm:text-[15px] text-[#302629]">
+                  <ul className="space-y-2 text-sm sm:text-[15px] text-[#302629] print:text-xs">
                     {(report.executive_summary.key_risks_and_barriers || []).map((risk, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <span className="text-[#C06E22] font-bold">•</span>
@@ -352,11 +357,11 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({
 
               {/* Next Validation Priority */}
               {report.executive_summary.next_validation_priority && (
-                <div className="p-5 bg-[#F4E9E7]/40 rounded-xl border border-[#B66B70]/20">
-                  <h3 className="text-lg font-bold text-[#873F46] mb-2">
+                <div className="print-avoid-break p-5 bg-[#F4E9E7]/40 rounded-xl border border-[#B66B70]/20 print:bg-rose-50/40 print:border-rose-200 print:p-4">
+                  <h3 className="text-lg font-bold text-[#873F46] mb-2 print:text-base">
                     Next Validation Priority
                   </h3>
-                  <p className="text-sm sm:text-[15px] text-[#302629] leading-relaxed">
+                  <p className="text-sm sm:text-[15px] text-[#302629] leading-relaxed print:text-xs">
                     {report.executive_summary.next_validation_priority}
                   </p>
                 </div>
@@ -364,13 +369,13 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({
 
               {/* Critical Unresolved Questions */}
               {report.executive_summary.critical_unresolved_questions && report.executive_summary.critical_unresolved_questions.length > 0 && (
-                <div className="p-5 bg-[#F7F4F2] rounded-xl border border-[#E7DAD8]">
-                  <h3 className="text-lg font-bold text-[#302629] mb-2.5">
+                <div className="print-avoid-break p-5 bg-[#F7F4F2] rounded-xl border border-[#E7DAD8] print:bg-slate-50 print:border-slate-200 print:p-4">
+                  <h3 className="text-lg font-bold text-[#302629] mb-2.5 print:text-base">
                     Critical Unresolved Questions
                   </h3>
                   <div className="space-y-2">
                     {report.executive_summary.critical_unresolved_questions.map((q, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-sm sm:text-[15px] text-[#302629]">
+                      <div key={idx} className="flex items-start gap-2 text-sm sm:text-[15px] text-[#302629] print:text-xs">
                         <span className="font-bold text-[#873F46]">{idx + 1}.</span>
                         <span>{q}</span>
                       </div>
@@ -383,198 +388,200 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({
         </div>
 
         {/* Section 2: Promising Value Hypotheses */}
-        <div className="bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl overflow-hidden shadow-xs">
+        <div className="report-section-card bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl overflow-hidden shadow-xs print:rounded-lg print:border-slate-300 print:shadow-none print:mb-4">
           <button
             onClick={() => toggleSection('promising')}
-            className="w-full px-7 py-5 flex items-center justify-between text-left hover:bg-[#F7F4F2]/50 transition-colors border-b border-[#E7DAD8]"
+            className="report-section-header w-full px-7 py-5 flex items-center justify-between text-left hover:bg-[#F7F4F2]/50 transition-colors border-b border-[#E7DAD8] print:bg-slate-50 print:border-slate-300 print:px-5 print:py-3 print:cursor-default"
           >
             <div className="flex items-center gap-3">
-              <span className="w-7 h-7 rounded-xl bg-[#F4E9E7] text-[#873F46] text-xs font-bold flex items-center justify-center">2</span>
-              <h2 className="text-[22px] font-bold text-[#302629]">Promising Findings ({report.what_appears_promising?.length || 0})</h2>
+              <span className="w-7 h-7 rounded-xl bg-[#F4E9E7] text-[#873F46] text-xs font-bold flex items-center justify-center print:bg-slate-200 print:text-slate-800">2</span>
+              <h2 className="text-[22px] font-bold text-[#302629] print:text-lg print:text-slate-900">Promising Findings ({report.what_appears_promising?.length || 0})</h2>
             </div>
-            {openSections.promising ? <ChevronUp className="w-5 h-5 text-[#78696B]" /> : <ChevronDown className="w-5 h-5 text-[#78696B]" />}
+            <div className="print:hidden">
+              {openSections.promising ? <ChevronUp className="w-5 h-5 text-[#78696B]" /> : <ChevronDown className="w-5 h-5 text-[#78696B]" />}
+            </div>
           </button>
 
-          {openSections.promising && (
-            <div className="p-7 space-y-4">
-              {(report.what_appears_promising || []).map((pf) => (
-                <div key={pf.finding_id} className="p-5 rounded-xl bg-[#F7F4F2] border border-[#E7DAD8] space-y-2.5">
-                  <div className="flex items-center justify-between gap-2">
-                    <h3 className="text-lg font-bold text-[#302629]">{pf.claim_or_hypothesis}</h3>
-                    {getFriendlyStatusBadge(pf.evidence_validation_status)}
-                  </div>
-                  <p className="text-sm sm:text-[15px] text-[#78696B] leading-relaxed">{pf.rationale}</p>
-                  <div className="text-xs text-[#3E7B54] bg-[#EDF6F0] p-3 rounded-lg border border-[#3E7B54]/20 font-medium">
-                    <strong>Validation Experiment:</strong> {pf.suggested_real_world_validation}
-                  </div>
+          <div className={`report-section-content p-7 space-y-4 print:p-5 print:space-y-3 ${openSections.promising ? 'block' : 'hidden print:block'}`}>
+            {(report.what_appears_promising || []).map((pf) => (
+              <div key={pf.finding_id} className="print-avoid-break p-5 rounded-xl bg-[#F7F4F2] border border-[#E7DAD8] space-y-2.5 print:bg-slate-50 print:border-slate-200 print:p-4">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <h3 className="text-lg font-bold text-[#302629] print:text-base">{pf.claim_or_hypothesis}</h3>
+                  {getFriendlyStatusBadge(pf.evidence_validation_status)}
                 </div>
-              ))}
-            </div>
-          )}
+                <p className="text-sm sm:text-[15px] text-[#78696B] leading-relaxed print:text-xs">{pf.rationale}</p>
+                <div className="text-xs text-[#3E7B54] bg-[#EDF6F0] p-3 rounded-lg border border-[#3E7B54]/20 font-medium print:bg-emerald-50 print:border-emerald-200">
+                  <strong>Validation Experiment:</strong> {pf.suggested_real_world_validation}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Section 3: Risks & Adoption Barriers */}
-        <div className="bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl overflow-hidden shadow-xs">
+        <div className="report-section-card bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl overflow-hidden shadow-xs print:rounded-lg print:border-slate-300 print:shadow-none print:mb-4">
           <button
             onClick={() => toggleSection('risks')}
-            className="w-full px-7 py-5 flex items-center justify-between text-left hover:bg-[#F7F4F2]/50 transition-colors border-b border-[#E7DAD8]"
+            className="report-section-header w-full px-7 py-5 flex items-center justify-between text-left hover:bg-[#F7F4F2]/50 transition-colors border-b border-[#E7DAD8] print:bg-slate-50 print:border-slate-300 print:px-5 print:py-3 print:cursor-default"
           >
             <div className="flex items-center gap-3">
-              <span className="w-7 h-7 rounded-xl bg-[#F4E9E7] text-[#873F46] text-xs font-bold flex items-center justify-center">3</span>
-              <h2 className="text-[22px] font-bold text-[#302629]">Identified Risks &amp; Barriers ({report.what_may_not_work?.length || 0})</h2>
+              <span className="w-7 h-7 rounded-xl bg-[#F4E9E7] text-[#873F46] text-xs font-bold flex items-center justify-center print:bg-slate-200 print:text-slate-800">3</span>
+              <h2 className="text-[22px] font-bold text-[#302629] print:text-lg print:text-slate-900">Identified Risks &amp; Barriers ({report.what_may_not_work?.length || 0})</h2>
             </div>
-            {openSections.risks ? <ChevronUp className="w-5 h-5 text-[#78696B]" /> : <ChevronDown className="w-5 h-5 text-[#78696B]" />}
+            <div className="print:hidden">
+              {openSections.risks ? <ChevronUp className="w-5 h-5 text-[#78696B]" /> : <ChevronDown className="w-5 h-5 text-[#78696B]" />}
+            </div>
           </button>
 
-          {openSections.risks && (
-            <div className="p-7 space-y-4">
-              {(report.what_may_not_work || []).map((rf) => (
-                <div key={rf.finding_id} className="p-5 rounded-xl bg-[#F7F4F2] border border-[#E7DAD8] space-y-2.5">
-                  <div className="flex items-center justify-between gap-2">
-                    <h3 className="text-lg font-bold text-[#302629]">{rf.concern_or_barrier}</h3>
-                    {getFriendlyStatusBadge(rf.evidence_validation_status)}
-                  </div>
-                  <div className="text-xs text-[#78696B] font-semibold">
-                    Category: <span className="text-[#302629] uppercase">{rf.barrier_category.replace(/_/g, ' ')}</span>
-                  </div>
-                  <p className="text-sm sm:text-[15px] text-[#78696B] leading-relaxed">{rf.rationale}</p>
-                  <div className="text-xs text-[#C06E22] bg-[#FAF2EA] p-3 rounded-lg border border-[#C06E22]/20 font-medium">
-                    <strong>Mitigation / Test:</strong> {rf.suggested_mitigation_or_test}
-                  </div>
+          <div className={`report-section-content p-7 space-y-4 print:p-5 print:space-y-3 ${openSections.risks ? 'block' : 'hidden print:block'}`}>
+            {(report.what_may_not_work || []).map((rf) => (
+              <div key={rf.finding_id} className="print-avoid-break p-5 rounded-xl bg-[#F7F4F2] border border-[#E7DAD8] space-y-2.5 print:bg-slate-50 print:border-slate-200 print:p-4">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <h3 className="text-lg font-bold text-[#302629] print:text-base">{rf.concern_or_barrier}</h3>
+                  {getFriendlyStatusBadge(rf.evidence_validation_status)}
                 </div>
-              ))}
-            </div>
-          )}
+                <div className="text-xs text-[#78696B] font-semibold print:text-slate-600">
+                  Category: <span className="text-[#302629] uppercase print:text-slate-800">{rf.barrier_category.replace(/_/g, ' ')}</span>
+                </div>
+                <p className="text-sm sm:text-[15px] text-[#78696B] leading-relaxed print:text-xs">{rf.rationale}</p>
+                <div className="text-xs text-[#C06E22] bg-[#FAF2EA] p-3 rounded-lg border border-[#C06E22]/20 font-medium print:bg-amber-50 print:border-amber-200">
+                  <strong>Mitigation / Test:</strong> {rf.suggested_mitigation_or_test}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Section 4: Customer Segments */}
-        <div className="bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl overflow-hidden shadow-xs">
+        <div className="report-section-card bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl overflow-hidden shadow-xs print:rounded-lg print:border-slate-300 print:shadow-none print:mb-4">
           <button
             onClick={() => toggleSection('segments')}
-            className="w-full px-7 py-5 flex items-center justify-between text-left hover:bg-[#F7F4F2]/50 transition-colors border-b border-[#E7DAD8]"
+            className="report-section-header w-full px-7 py-5 flex items-center justify-between text-left hover:bg-[#F7F4F2]/50 transition-colors border-b border-[#E7DAD8] print:bg-slate-50 print:border-slate-300 print:px-5 print:py-3 print:cursor-default"
           >
             <div className="flex items-center gap-3">
-              <span className="w-7 h-7 rounded-xl bg-[#F4E9E7] text-[#873F46] text-xs font-bold flex items-center justify-center">4</span>
-              <h2 className="text-[22px] font-bold text-[#302629]">Customer Segments Comparison ({report.segment_comparison?.length || 0})</h2>
+              <span className="w-7 h-7 rounded-xl bg-[#F4E9E7] text-[#873F46] text-xs font-bold flex items-center justify-center print:bg-slate-200 print:text-slate-800">4</span>
+              <h2 className="text-[22px] font-bold text-[#302629] print:text-lg print:text-slate-900">Customer Segments Comparison ({report.segment_comparison?.length || 0})</h2>
             </div>
-            {openSections.segments ? <ChevronUp className="w-5 h-5 text-[#78696B]" /> : <ChevronDown className="w-5 h-5 text-[#78696B]" />}
+            <div className="print:hidden">
+              {openSections.segments ? <ChevronUp className="w-5 h-5 text-[#78696B]" /> : <ChevronDown className="w-5 h-5 text-[#78696B]" />}
+            </div>
           </button>
 
-          {openSections.segments && (
-            <div className="p-7 grid grid-cols-1 md:grid-cols-2 gap-5">
-              {(report.segment_comparison || []).map((seg, i) => (
-                <div key={i} className="p-5 rounded-xl bg-[#F7F4F2] border border-[#E7DAD8] space-y-3">
-                  <div className="flex items-start justify-between gap-2">
-                    <h3 className="text-lg font-bold text-[#302629]">{seg.segment_name}</h3>
-                    <span className="text-xs font-bold bg-[#F4E9E7] text-[#873F46] px-2.5 py-0.5 rounded-full">
-                      {seg.evaluated_personas_count} personas
+          <div className={`report-section-content report-section-content-grid p-7 grid grid-cols-1 md:grid-cols-2 gap-5 print:p-5 print:gap-3.5 ${openSections.segments ? 'grid' : 'hidden print:grid'}`}>
+            {(report.segment_comparison || []).map((seg, i) => (
+              <div key={i} className="print-avoid-break p-5 rounded-xl bg-[#F7F4F2] border border-[#E7DAD8] space-y-3 print:bg-slate-50 print:border-slate-200 print:p-4">
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="text-lg font-bold text-[#302629] print:text-base">{seg.segment_name}</h3>
+                  <span className="text-xs font-bold bg-[#F4E9E7] text-[#873F46] px-2.5 py-0.5 rounded-full print:bg-slate-200 print:text-slate-800">
+                    {seg.evaluated_personas_count} personas
+                  </span>
+                </div>
+                <div className="grid grid-cols-3 gap-2 text-center text-xs">
+                  <div className="bg-[#FFFFFF] p-2 rounded-lg border border-[#E7DAD8] print:bg-white print:border-slate-300">
+                    <span className="text-[#78696B] block">Intent</span>
+                    <span className="font-bold text-[#873F46] text-sm print:text-rose-700">
+                      {seg.median_scores?.purchase_intent !== undefined && seg.median_scores?.purchase_intent !== null
+                        ? `${seg.median_scores.purchase_intent}/10`
+                        : '-'}
                     </span>
                   </div>
-                  <div className="grid grid-cols-3 gap-2 text-center text-xs">
-                    <div className="bg-[#FFFFFF] p-2 rounded-lg border border-[#E7DAD8]">
-                      <span className="text-[#78696B] block">Intent</span>
-                      <span className="font-bold text-[#873F46] text-sm">
-                        {seg.median_scores?.purchase_intent !== undefined && seg.median_scores?.purchase_intent !== null
-                          ? `${seg.median_scores.purchase_intent}/10`
-                          : '-'}
-                      </span>
-                    </div>
-                    <div className="bg-[#FFFFFF] p-2 rounded-lg border border-[#E7DAD8]">
-                      <span className="text-[#78696B] block">Afford.</span>
-                      <span className="font-bold text-[#3E7B54] text-sm">
-                        {seg.median_scores?.affordability !== undefined && seg.median_scores?.affordability !== null
-                          ? `${seg.median_scores.affordability}/10`
-                          : '-'}
-                      </span>
-                    </div>
-                    <div className="bg-[#FFFFFF] p-2 rounded-lg border border-[#E7DAD8]">
-                      <span className="text-[#78696B] block">Interest</span>
-                      <span className="font-bold text-[#302629] text-sm">
-                        {seg.median_scores?.interest !== undefined && seg.median_scores?.interest !== null
-                          ? `${seg.median_scores.interest}/10`
-                          : '-'}
-                      </span>
-                    </div>
+                  <div className="bg-[#FFFFFF] p-2 rounded-lg border border-[#E7DAD8] print:bg-white print:border-slate-300">
+                    <span className="text-[#78696B] block">Afford.</span>
+                    <span className="font-bold text-[#3E7B54] text-sm print:text-emerald-700">
+                      {seg.median_scores?.affordability !== undefined && seg.median_scores?.affordability !== null
+                        ? `${seg.median_scores.affordability}/10`
+                        : '-'}
+                    </span>
                   </div>
-                  <p className="text-xs text-[#78696B] leading-relaxed">{seg.affordability_and_adoption_summary}</p>
+                  <div className="bg-[#FFFFFF] p-2 rounded-lg border border-[#E7DAD8] print:bg-white print:border-slate-300">
+                    <span className="text-[#78696B] block">Interest</span>
+                    <span className="font-bold text-[#302629] text-sm print:text-slate-800">
+                      {seg.median_scores?.interest !== undefined && seg.median_scores?.interest !== null
+                        ? `${seg.median_scores.interest}/10`
+                        : '-'}
+                    </span>
+                  </div>
                 </div>
-              ))}
-              <div className="col-span-full pt-2 text-xs text-[#78696B] italic">
-                *Note: Persona counts and median scores reflect synthetic simulation archetypes on a 1–10 ordinal scale, not actual market share or conversion probabilities.*
+                <p className="text-xs text-[#78696B] leading-relaxed print:text-slate-600">{seg.affordability_and_adoption_summary}</p>
               </div>
+            ))}
+            <div className="col-span-full pt-2 text-xs text-[#78696B] italic print:text-slate-500">
+              *Note: Persona counts and median scores reflect synthetic simulation archetypes on a 1–10 ordinal scale, not actual market share or conversion probabilities.*
             </div>
-          )}
+          </div>
         </div>
 
         {/* Section 5: Feature Prioritization */}
-        <div className="bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl overflow-hidden shadow-xs">
+        <div className="report-section-card bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl overflow-hidden shadow-xs print:rounded-lg print:border-slate-300 print:shadow-none print:mb-4">
           <button
             onClick={() => toggleSection('features')}
-            className="w-full px-7 py-5 flex items-center justify-between text-left hover:bg-[#F7F4F2]/50 transition-colors border-b border-[#E7DAD8]"
+            className="report-section-header w-full px-7 py-5 flex items-center justify-between text-left hover:bg-[#F7F4F2]/50 transition-colors border-b border-[#E7DAD8] print:bg-slate-50 print:border-slate-300 print:px-5 print:py-3 print:cursor-default"
           >
             <div className="flex items-center gap-3">
-              <span className="w-7 h-7 rounded-xl bg-[#F4E9E7] text-[#873F46] text-xs font-bold flex items-center justify-center">5</span>
-              <h2 className="text-[22px] font-bold text-[#302629]">Feature Prioritization ({report.feature_prioritization?.length || 0})</h2>
+              <span className="w-7 h-7 rounded-xl bg-[#F4E9E7] text-[#873F46] text-xs font-bold flex items-center justify-center print:bg-slate-200 print:text-slate-800">5</span>
+              <h2 className="text-[22px] font-bold text-[#302629] print:text-lg print:text-slate-900">Feature Prioritization ({report.feature_prioritization?.length || 0})</h2>
             </div>
-            {openSections.features ? <ChevronUp className="w-5 h-5 text-[#78696B]" /> : <ChevronDown className="w-5 h-5 text-[#78696B]" />}
+            <div className="print:hidden">
+              {openSections.features ? <ChevronUp className="w-5 h-5 text-[#78696B]" /> : <ChevronDown className="w-5 h-5 text-[#78696B]" />}
+            </div>
           </button>
 
-          {openSections.features && (
-            <div className="p-7 space-y-3">
-              {(report.feature_prioritization || []).map((feat, i) => (
-                <div key={i} className="p-4 rounded-xl bg-[#F7F4F2] border border-[#E7DAD8] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-[#EDF6F0] text-[#3E7B54]">
-                        {feat.priority_tier}
-                      </span>
-                      <h3 className="text-base font-bold text-[#302629]">{feat.feature_name}</h3>
-                    </div>
-                    <p className="text-xs text-[#78696B]">Uncertainty: {feat.main_uncertainty}</p>
+          <div className={`report-section-content p-7 space-y-3 print:p-5 print:space-y-2.5 ${openSections.features ? 'block' : 'hidden print:block'}`}>
+            {(report.feature_prioritization || []).map((feat, i) => (
+              <div key={i} className="print-avoid-break p-4 rounded-xl bg-[#F7F4F2] border border-[#E7DAD8] flex flex-col sm:flex-row sm:items-center justify-between gap-3 print:bg-slate-50 print:border-slate-200 print:p-3">
+                <div>
+                  <div className="flex items-center gap-2 mb-1 flex-wrap">
+                    <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-[#EDF6F0] text-[#3E7B54] print:bg-emerald-100 print:text-emerald-800">
+                      {feat.priority_tier}
+                    </span>
+                    <h3 className="text-base font-bold text-[#302629] print:text-sm">{feat.feature_name}</h3>
                   </div>
-                  <div className="shrink-0">{getFriendlyStatusBadge(feat.evidence_validation_status)}</div>
+                  <p className="text-xs text-[#78696B] print:text-slate-600">Uncertainty: {feat.main_uncertainty}</p>
                 </div>
-              ))}
-            </div>
-          )}
+                <div className="shrink-0">{getFriendlyStatusBadge(feat.evidence_validation_status)}</div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Section 6: Evidence Coverage Audit */}
-        <div className="bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl overflow-hidden shadow-xs">
+        <div className="report-section-card bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl overflow-hidden shadow-xs print:rounded-lg print:border-slate-300 print:shadow-none print:mb-4">
           <button
             onClick={() => toggleSection('audit')}
-            className="w-full px-7 py-5 flex items-center justify-between text-left hover:bg-[#F7F4F2]/50 transition-colors border-b border-[#E7DAD8]"
+            className="report-section-header w-full px-7 py-5 flex items-center justify-between text-left hover:bg-[#F7F4F2]/50 transition-colors border-b border-[#E7DAD8] print:bg-slate-50 print:border-slate-300 print:px-5 print:py-3 print:cursor-default"
           >
             <div className="flex items-center gap-3">
-              <span className="w-7 h-7 rounded-xl bg-[#F4E9E7] text-[#873F46] text-xs font-bold flex items-center justify-center">6</span>
-              <h2 className="text-[22px] font-bold text-[#302629]">Evidence Coverage Audit</h2>
+              <span className="w-7 h-7 rounded-xl bg-[#F4E9E7] text-[#873F46] text-xs font-bold flex items-center justify-center print:bg-slate-200 print:text-slate-800">6</span>
+              <h2 className="text-[22px] font-bold text-[#302629] print:text-lg print:text-slate-900">Evidence Coverage Audit</h2>
             </div>
-            {openSections.audit ? <ChevronUp className="w-5 h-5 text-[#78696B]" /> : <ChevronDown className="w-5 h-5 text-[#78696B]" />}
+            <div className="print:hidden">
+              {openSections.audit ? <ChevronUp className="w-5 h-5 text-[#78696B]" /> : <ChevronDown className="w-5 h-5 text-[#78696B]" />}
+            </div>
           </button>
 
-          {openSections.audit && report.evidence_coverage_audit && (
-            <div className="p-7 space-y-4">
-              <div className="text-sm text-[#78696B]">
-                Formula: <code className="bg-[#F7F4F2] px-2 py-0.5 rounded border border-[#E7DAD8] text-xs font-mono">{report.evidence_coverage_audit.coverage_formula_explanation}</code>
+          {report.evidence_coverage_audit && (
+            <div className={`report-section-content p-7 space-y-4 print:p-5 print:space-y-3 ${openSections.audit ? 'block' : 'hidden print:block'}`}>
+              <div className="text-sm text-[#78696B] print:text-slate-600 print:text-xs">
+                Formula: <code className="bg-[#F7F4F2] px-2 py-0.5 rounded border border-[#E7DAD8] text-xs font-mono print:bg-slate-100 print:border-slate-300">{report.evidence_coverage_audit.coverage_formula_explanation}</code>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div className="p-4 bg-[#F7F4F2] rounded-xl border border-[#E7DAD8] text-center">
-                  <span className="text-xs text-[#78696B] block">Coverage Ratio</span>
-                  <span className="text-2xl font-black text-[#873F46]">
+              <div className="print-avoid-break grid grid-cols-2 sm:grid-cols-4 gap-4 print:gap-3">
+                <div className="p-4 bg-[#F7F4F2] rounded-xl border border-[#E7DAD8] text-center print:bg-slate-50 print:border-slate-200 print:p-3">
+                  <span className="text-xs text-[#78696B] block print:text-slate-600">Coverage Ratio</span>
+                  <span className="text-2xl font-black text-[#873F46] print:text-xl print:text-rose-800">
                     {((report.evidence_coverage_audit.evidence_coverage_ratio || 0) * 100).toFixed(0)}%
                   </span>
                 </div>
-                <div className="p-4 bg-[#EDF6F0] rounded-xl border border-[#3E7B54]/20 text-center">
-                  <span className="text-xs text-[#3E7B54] block">Corroborated</span>
-                  <span className="text-2xl font-black text-[#3E7B54]">{report.evidence_coverage_audit.supported_count}</span>
+                <div className="p-4 bg-[#EDF6F0] rounded-xl border border-[#3E7B54]/20 text-center print:bg-emerald-50 print:border-emerald-200 print:p-3">
+                  <span className="text-xs text-[#3E7B54] block print:text-emerald-700">Corroborated</span>
+                  <span className="text-2xl font-black text-[#3E7B54] print:text-xl print:text-emerald-700">{report.evidence_coverage_audit.supported_count}</span>
                 </div>
-                <div className="p-4 bg-[#FAF2EA] rounded-xl border border-[#C06E22]/20 text-center">
-                  <span className="text-xs text-[#C06E22] block">Mixed Signals</span>
-                  <span className="text-2xl font-black text-[#C06E22]">{report.evidence_coverage_audit.mixed_count}</span>
+                <div className="p-4 bg-[#FAF2EA] rounded-xl border border-[#C06E22]/20 text-center print:bg-amber-50 print:border-amber-200 print:p-3">
+                  <span className="text-xs text-[#C06E22] block print:text-amber-700">Mixed Signals</span>
+                  <span className="text-2xl font-black text-[#C06E22] print:text-xl print:text-amber-700">{report.evidence_coverage_audit.mixed_count}</span>
                 </div>
-                <div className="p-4 bg-[#F7F4F2] rounded-xl border border-[#E7DAD8] text-center">
-                  <span className="text-xs text-[#78696B] block">Needs Evidence</span>
-                  <span className="text-2xl font-black text-[#78696B]">{report.evidence_coverage_audit.insufficient_evidence_count}</span>
+                <div className="p-4 bg-[#F7F4F2] rounded-xl border border-[#E7DAD8] text-center print:bg-slate-50 print:border-slate-200 print:p-3">
+                  <span className="text-xs text-[#78696B] block print:text-slate-600">Needs Evidence</span>
+                  <span className="text-2xl font-black text-[#78696B] print:text-xl print:text-slate-700">{report.evidence_coverage_audit.insufficient_evidence_count}</span>
                 </div>
               </div>
             </div>
@@ -583,69 +590,69 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({
 
         {/* Section 7: Core Research Questions Analysis */}
         {report.research_questions_analysis && report.research_questions_analysis.length > 0 && (
-          <div className="bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl overflow-hidden shadow-xs">
+          <div className="report-section-card bg-[#FFFFFF] border border-[#E7DAD8] rounded-2xl overflow-hidden shadow-xs print:rounded-lg print:border-slate-300 print:shadow-none print:mb-4">
             <button
               onClick={() => toggleSection('questions')}
-              className="w-full px-7 py-5 flex items-center justify-between text-left hover:bg-[#F7F4F2]/50 transition-colors border-b border-[#E7DAD8]"
+              className="report-section-header w-full px-7 py-5 flex items-center justify-between text-left hover:bg-[#F7F4F2]/50 transition-colors border-b border-[#E7DAD8] print:bg-slate-50 print:border-slate-300 print:px-5 print:py-3 print:cursor-default"
             >
               <div className="flex items-center gap-3">
-                <span className="w-7 h-7 rounded-xl bg-[#F4E9E7] text-[#873F46] text-xs font-bold flex items-center justify-center">7</span>
-                <h2 className="text-[22px] font-bold text-[#302629]">
+                <span className="w-7 h-7 rounded-xl bg-[#F4E9E7] text-[#873F46] text-xs font-bold flex items-center justify-center print:bg-slate-200 print:text-slate-800">7</span>
+                <h2 className="text-[22px] font-bold text-[#302629] print:text-lg print:text-slate-900">
                   Core Research Questions Analysis ({report.research_questions_analysis.length})
                 </h2>
               </div>
-              {openSections.questions ? <ChevronUp className="w-5 h-5 text-[#78696B]" /> : <ChevronDown className="w-5 h-5 text-[#78696B]" />}
+              <div className="print:hidden">
+                {openSections.questions ? <ChevronUp className="w-5 h-5 text-[#78696B]" /> : <ChevronDown className="w-5 h-5 text-[#78696B]" />}
+              </div>
             </button>
 
-            {openSections.questions && (
-              <div className="p-7 space-y-5">
-                {report.research_questions_analysis.map((rqa, i) => (
-                  <div key={i} className="p-5 rounded-xl bg-[#F7F4F2] border border-[#E7DAD8] space-y-3">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#E7DAD8] pb-3">
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-6 h-6 rounded-lg bg-[#F4E9E7] text-[#873F46] text-xs font-bold flex items-center justify-center shrink-0">
-                          Q{i + 1}
-                        </span>
-                        <h3 className="text-base font-bold text-[#302629] leading-snug">{rqa.question}</h3>
-                      </div>
-                      <div className="flex items-center gap-2 self-start sm:self-auto shrink-0 flex-wrap">
-                        {getBasisBadge(rqa.basis)}
-                        {getQuestionValidationBadge(rqa)}
-                      </div>
+            <div className={`report-section-content p-7 space-y-5 print:p-5 print:space-y-4 ${openSections.questions ? 'block' : 'hidden print:block'}`}>
+              {report.research_questions_analysis.map((rqa, i) => (
+                <div key={i} className="print-avoid-break p-5 rounded-xl bg-[#F7F4F2] border border-[#E7DAD8] space-y-3 print:bg-slate-50 print:border-slate-200 print:p-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#E7DAD8] pb-3 print:border-slate-200">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-6 h-6 rounded-lg bg-[#F4E9E7] text-[#873F46] text-xs font-bold flex items-center justify-center shrink-0 print:bg-slate-200 print:text-slate-800">
+                        Q{i + 1}
+                      </span>
+                      <h3 className="text-base font-bold text-[#302629] leading-snug print:text-sm">{rqa.question}</h3>
                     </div>
-
-                    <div className="text-sm text-[#302629] leading-relaxed bg-[#FFFFFF] p-4 rounded-lg border border-[#E7DAD8]">
-                      {rqa.answer}
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs pt-1">
-                      <div>
-                        <span className="font-bold text-[#78696B] uppercase tracking-wider block mb-1">Supporting Sources</span>
-                        {rqa.supporting_sources && rqa.supporting_sources.length > 0 ? (
-                          <div className="flex flex-wrap gap-1">
-                            {rqa.supporting_sources.map((src, idx) => (
-                              <span key={idx} className="px-2 py-0.5 rounded bg-[#F4E9E7] text-[#873F46] font-medium border border-[#B66B70]/20">
-                                {src}
-                              </span>
-                            ))}
-                          </div>
-                        ) : (
-                          <span className="text-[#78696B] italic">None (Model Knowledge Fallback)</span>
-                        )}
-                      </div>
-                      <div>
-                        <span className="font-bold text-[#78696B] uppercase tracking-wider block mb-1">Confidence</span>
-                        <p className="text-[#302629]">{rqa.confidence}</p>
-                      </div>
-                      <div>
-                        <span className="font-bold text-[#78696B] uppercase tracking-wider block mb-1">Key Limitation</span>
-                        <p className="text-[#78696B]">{rqa.limitations?.[0] || 'Standard domain constraints apply'}</p>
-                      </div>
+                    <div className="flex items-center gap-2 self-start sm:self-auto shrink-0 flex-wrap">
+                      {getBasisBadge(rqa.basis)}
+                      {getQuestionValidationBadge(rqa)}
                     </div>
                   </div>
-                ))}
-              </div>
-            )}
+
+                  <div className="text-sm text-[#302629] leading-relaxed bg-[#FFFFFF] p-4 rounded-lg border border-[#E7DAD8] print:bg-white print:border-slate-200 print:text-xs">
+                    {rqa.answer}
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs pt-1">
+                    <div>
+                      <span className="font-bold text-[#78696B] uppercase tracking-wider block mb-1 print:text-slate-600">Supporting Sources</span>
+                      {rqa.supporting_sources && rqa.supporting_sources.length > 0 ? (
+                        <div className="flex flex-wrap gap-1">
+                          {rqa.supporting_sources.map((src, idx) => (
+                            <span key={idx} className="px-2 py-0.5 rounded bg-[#F4E9E7] text-[#873F46] font-medium border border-[#B66B70]/20 print:bg-slate-100 print:text-slate-800 print:border-slate-300">
+                              {src}
+                            </span>
+                          ))}
+                        </div>
+                      ) : (
+                        <span className="text-[#78696B] italic print:text-slate-500">None (Model Knowledge Fallback)</span>
+                      )}
+                    </div>
+                    <div>
+                      <span className="font-bold text-[#78696B] uppercase tracking-wider block mb-1 print:text-slate-600">Confidence</span>
+                      <p className="text-[#302629] print:text-slate-800">{rqa.confidence}</p>
+                    </div>
+                    <div>
+                      <span className="font-bold text-[#78696B] uppercase tracking-wider block mb-1 print:text-slate-600">Key Limitation</span>
+                      <p className="text-[#78696B] print:text-slate-600">{rqa.limitations?.[0] || 'Standard domain constraints apply'}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </div>

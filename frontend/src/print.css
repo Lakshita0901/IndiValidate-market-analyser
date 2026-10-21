@@ -1,0 +1,279 @@
+/* ==========================================================================
+   IndiValidate — Dedicated Print Stylesheet
+   Targets standard A4 paper, full-width content, and professional print/PDF layout.
+   ========================================================================== */
+
+@page {
+  size: A4 portrait;
+  margin: 12mm 12mm 14mm 12mm;
+}
+
+@media print {
+  /* -------------------------------------------------------------------------
+     1. Hide UI elements not meant for printed reports
+     ------------------------------------------------------------------------- */
+  aside,
+  header,
+  nav,
+  .print\:hidden,
+  [data-print="hide"],
+  button[title="Print report"],
+  .dash-root aside,
+  .dash-root header,
+  .dash-root .lg\:hidden {
+    display: none !important;
+  }
+
+  /* -------------------------------------------------------------------------
+     2. Reset global document canvas & root layout
+     ------------------------------------------------------------------------- */
+  html,
+  body {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 10pt !important;
+    line-height: 1.45 !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  #root {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  /* Neutralize dark-theme dashboard wrapper */
+  .dash-root {
+    display: block !important;
+    min-height: auto !important;
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Remove sidebar margin/padding on main area (overriding lg:pl-64) */
+  .dash-root > div,
+  .dash-root .lg\:pl-64,
+  div[class*="lg:pl-64"] {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #ffffff !important;
+  }
+
+  .dash-root main {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  /* -------------------------------------------------------------------------
+     3. Report container and full printable width
+     ------------------------------------------------------------------------- */
+  .report-page-container {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* -------------------------------------------------------------------------
+     4. Report Document Header Bar & Title
+     ------------------------------------------------------------------------- */
+  .report-header-card {
+    display: block !important;
+    width: 100% !important;
+    background-color: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    padding: 14px 18px !important;
+    margin-bottom: 14px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .report-header-title {
+    font-size: 19pt !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+    color: #0f172a !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+    margin-top: 4px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* -------------------------------------------------------------------------
+     5. Color overrides: Neutralize dark-theme classes for light print
+     ------------------------------------------------------------------------- */
+  /* Text colors */
+  .dash-root,
+  .dash-root [class*="text-[#302629]"],
+  .dash-root [class*="text-[#F5F5F5]"] {
+    color: #0f172a !important;
+  }
+
+  .dash-root [class*="text-[#78696B]"],
+  .dash-root [class*="text-[#7E8995]"],
+  .dash-root [class*="text-[#A0AAB5]"] {
+    color: #475569 !important;
+  }
+
+  .dash-root h1,
+  .dash-root h2,
+  .dash-root h3,
+  .dash-root h4 {
+    color: #0f172a !important;
+  }
+
+  /* Status accent text */
+  .dash-root [class*="text-[#3E7B54]"],
+  .dash-root [class*="text-[#2F6342]"] {
+    color: #15803d !important;
+  }
+
+  .dash-root [class*="text-[#C06E22]"],
+  .dash-root [class*="text-[#9B5515]"] {
+    color: #b45309 !important;
+  }
+
+  .dash-root [class*="text-[#873F46]"],
+  .dash-root [class*="text-[#F43F4F]"] {
+    color: #991b1b !important;
+  }
+
+  /* Surface backgrounds */
+  .dash-root .bg-white,
+  .dash-root [class*="bg-[#FFFFFF]"],
+  .dash-root [class*="bg-[#101316]"],
+  .dash-root [class*="bg-[#0D1012]"],
+  .dash-root [class*="bg-[#171B20]"] {
+    background-color: #ffffff !important;
+  }
+
+  .dash-root [class*="bg-[#F7F4F2]"],
+  .dash-root [class*="bg-[#1D2228]"] {
+    background-color: #f8fafc !important;
+  }
+
+  .dash-root [class*="bg-[#FAF5F4]"],
+  .dash-root [class*="bg-[#FAF2EA]"] {
+    background-color: #fffbeb !important;
+  }
+
+  .dash-root [class*="bg-[#EDF6F0]"],
+  .dash-root [class*="bg-[#E0EFE5]"] {
+    background-color: #f0fdf4 !important;
+  }
+
+  .dash-root [class*="bg-[#F4E9E7]"] {
+    background-color: #fef2f2 !important;
+  }
+
+  /* Borders */
+  .dash-root [class*="border-[#E7DAD8]"],
+  .dash-root [class*="border-[#2B3138]"],
+  .dash-root [class*="border-[#1D2228]"] {
+    border-color: #e2e8f0 !important;
+  }
+
+  .dash-root [class*="border-[#3E7B54]"] {
+    border-color: #86efac !important;
+  }
+
+  .dash-root [class*="border-[#C06E22]"] {
+    border-color: #fde68a !important;
+  }
+
+  .dash-root [class*="border-[#873F46]"],
+  .dash-root [class*="border-[#B66B70]"] {
+    border-color: #fca5a5 !important;
+  }
+
+  /* Remove shadows */
+  .dash-root * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* -------------------------------------------------------------------------
+     6. Section structure and pagination rules
+     ------------------------------------------------------------------------- */
+  .report-section-card {
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    background-color: #ffffff !important;
+    margin-bottom: 14px !important;
+    box-shadow: none !important;
+    break-inside: auto !important; /* Allow multi-page sections to flow */
+    page-break-inside: auto !important;
+  }
+
+  .report-section-header {
+    background-color: #f8fafc !important;
+    border-bottom: 1px solid #cbd5e1 !important;
+    padding: 10px 16px !important;
+    cursor: default !important;
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Force all section bodies to show during print even if collapsed on screen */
+  .report-section-content {
+    display: block !important;
+    padding: 14px 16px !important;
+  }
+
+  .report-section-content-grid {
+    display: grid !important;
+    padding: 14px 16px !important;
+  }
+
+  /* Avoid orphaned headings */
+  h1, h2, h3, h4, .report-section-header {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  /* Avoid splitting compact cards & findings across page breaks */
+  .print-avoid-break {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Badge styling in print */
+  span[class*="rounded-full"] {
+    border-width: 1px !important;
+    font-size: 8.5pt !important;
+    padding: 2px 8px !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Code elements in print */
+  code {
+    font-size: 8.5pt !important;
+    border: 1px solid #cbd5e1 !important;
+    background-color: #f1f5f9 !important;
+    color: #334155 !important;
+  }
+}

@@ -50,7 +50,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* Mobile Backdrop */}
       {isOpenMobile && (
         <div
-          className="fixed inset-0 bg-black/60 z-40 lg:hidden backdrop-blur-sm"
+          className="fixed inset-0 bg-black/60 z-40 lg:hidden backdrop-blur-sm print:hidden"
           onClick={onToggleMobile}
           aria-hidden="true"
         />
@@ -58,7 +58,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-[#101316] border-r border-[#2B3138] flex flex-col transition-transform duration-200 ease-in-out lg:translate-x-0 ${
+        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-[#101316] border-r border-[#2B3138] flex flex-col transition-transform duration-200 ease-in-out lg:translate-x-0 print:hidden ${
           isOpenMobile ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
