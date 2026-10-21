@@ -1,0 +1,8 @@
+# Pyrefly Configuration File
+# Configures the Python interpreter and third-party library paths
+
+python-interpreter-path = 'C:\Users\Admin\AppData\Local\Python\pythoncore-3.14-64\python.exe'
+
+site-package-path = [
+    'C:\Users\Admin\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages',
+]

@@ -1,0 +1,36 @@
+# Environment variables and secrets
+.env
+*.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+*.egg-info/
+.venv/
+env/
+venv/
+ENV/
+
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Test debug temporary directories
+data/test_debug/
+data/test_tmp/
+data/plfs_2025/.cache/

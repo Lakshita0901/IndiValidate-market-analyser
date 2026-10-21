@@ -1,0 +1,1160 @@
+{
+  "report_id": "MVR-A4BDAB0F",
+  "generated_at": "2026-Q1-Pipeline-Evaluation",
+  "executive_summary": {
+    "idea_description": "AI-powered EV fleet charging hub and booking service in Ahmedabad",
+    "target_customer_segments": [
+      "Fleet operators"
+    ],
+    "strongest_promising_signals": [
+      "[PROMISING-1] Simulated personas value: 'Reliable and fast charging points at dedicated hubs.' (9 positive mentions)",
+      "[PROMISING-2] Simulated personas value: 'AI-powered optimization for availability and potentially cost-effective charging.' (6 positive mentions)",
+      "[PROMISING-3] Simulated personas value: 'Mobile app for booking charging slots.' (5 positive mentions)"
+    ],
+    "key_risks_and_barriers": [
+      "[RISK-1] The reliability and user-friendliness of the 'AI-powered' system and booking app need to be proven. (trust and reliability)",
+      "[RISK-2] The lack of specific pricing information is a major concern given Rahul's high price sensitivity and strict budget. (pricing and affordability)",
+      "[RISK-3] Brand trust is moderate, so initial adoption might require strong incentives or positive word-of-mouth. (trust and reliability)"
+    ],
+    "critical_unresolved_questions": [
+      "Product pricing is unverified; idea did not propose a concrete price point.",
+      "Willingness to pay cannot be inferred directly from aggregate census or labour statistics.",
+      "Specific pricing structure and cost per charge for the service."
+    ],
+    "next_validation_priority": "Conduct 10 in-depth customer discovery interviews with Fleet operators (EXP-1) to validate whether current switching inertia and operational objections represent insurmountable barriers before building production software."
+  },
+  "idea_and_context": {
+    "business_idea": "AI-powered EV fleet charging hub and booking service in Ahmedabad",
+    "business_category": "Transportation",
+    "target_segments": [
+      "Fleet operators"
+    ],
+    "target_geography": {
+      "state": "Ahmedabad"
+    },
+    "intended_use_cases": [
+      "Rahul needs to charge his small commercial EV (e.g., 3-wheeler or small van) between his corporate job shifts or on weekends to supplement his income. He looks for affordable, fast, and easily locatable charging hubs via a simple mobile app.",
+      "Priya needs to quickly charge her EV taxi multiple times a day to keep her business running. She actively uses apps to find available chargers, book slots, and manage payments, prioritizing speed and reliability to avoid losing customers.",
+      "Sanjay oversees a small pool of government EVs used for official duties. He needs a dependable charging solution that offers clear billing and minimizes administrative effort, even if it means sticking to more traditional booking methods or requiring staff to report charging manually, rather than relying solely on advanced app features.",
+      "Meera uses a commercial EV for local deliveries of her handicrafts. She needs a charging service that is dependable, offers efficient booking, and allows her to integrate charging stops seamlessly into her delivery routes. She values professionalism and a smooth user experience, even if it means using a mobile app."
+    ],
+    "pricing_information": {
+      "is_specified": false,
+      "supplied_price": null,
+      "currency": null,
+      "price_is_conditional": true,
+      "pricing_status": "Unresolved / Conditional: No price was specified in the business idea."
+    }
+  },
+  "what_appears_promising": [
+    {
+      "finding_id": "PROMISING-1",
+      "claim_or_hypothesis": "Simulated personas value: 'Reliable and fast charging points at dedicated hubs.' (9 positive mentions)",
+      "category": "workflow_efficiency",
+      "relevant_segments": [
+        "Fleet operators"
+      ],
+      "supporting_persona_ids": [
+        "persona_1",
+        "persona_2",
+        "persona_3",
+        "persona_4",
+        "persona_5",
+        "persona_6",
+        "persona_7",
+        "persona_8",
+        "persona_9"
+      ],
+      "supporting_evidence_ids": [],
+      "evidence_sources": [
+        "google_trends",
+        "plfs"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "rationale": "Cited records (google_trends, plfs) provide background context but do not directly validate this specific finding.",
+      "caveats_and_assumptions": [
+        "Weighted average from reported gross earnings/net profit (including business losses) in PLFS 2025.",
+        "Aggregate plfs record [doc_ev_plfs_77b3c1a3e34b_c0] provides demographic context but does not validate specific product intent.",
+        "Relative search interest on a 0-100 scale; does not represent absolute search volume."
+      ],
+      "suggested_real_world_validation": "Conduct feature preference test with 10 real users from Fleet operators."
+    },
+    {
+      "finding_id": "PROMISING-2",
+      "claim_or_hypothesis": "Simulated personas value: 'AI-powered optimization for availability and potentially cost-effective charging.' (6 positive mentions)",
+      "category": "economic_alignment",
+      "relevant_segments": [
+        "Fleet operators"
+      ],
+      "supporting_persona_ids": [
+        "persona_1",
+        "persona_4",
+        "persona_5",
+        "persona_6",
+        "persona_7",
+        "persona_8"
+      ],
+      "supporting_evidence_ids": [],
+      "evidence_sources": [
+        "google_trends"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "rationale": "Cited records (google_trends) provide background context but do not directly validate this specific finding.",
+      "caveats_and_assumptions": [
+        "Relative search interest on a 0-100 scale; does not represent absolute search volume.",
+        "Normalized against peak interest within the selected time window and region."
+      ],
+      "suggested_real_world_validation": "Conduct feature preference test with 10 real users from Fleet operators."
+    },
+    {
+      "finding_id": "PROMISING-3",
+      "claim_or_hypothesis": "Simulated personas value: 'Mobile app for booking charging slots.' (5 positive mentions)",
+      "category": "feature",
+      "relevant_segments": [
+        "Fleet operators"
+      ],
+      "supporting_persona_ids": [
+        "persona_1",
+        "persona_3",
+        "persona_4",
+        "persona_6",
+        "persona_9"
+      ],
+      "supporting_evidence_ids": [],
+      "evidence_sources": [
+        "google_trends",
+        "plfs"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "rationale": "Cited records (google_trends, plfs) provide background context but do not directly validate this specific finding.",
+      "caveats_and_assumptions": [
+        "Weighted average from reported gross earnings/net profit (including business losses) in PLFS 2025.",
+        "Aggregate plfs record [doc_ev_plfs_77b3c1a3e34b_c0] provides demographic context but does not validate specific product intent.",
+        "Relative search interest on a 0-100 scale; does not represent absolute search volume."
+      ],
+      "suggested_real_world_validation": "Conduct feature preference test with 10 real users from Fleet operators."
+    },
+    {
+      "finding_id": "PROMISING-4",
+      "claim_or_hypothesis": "Simulated personas value: 'Digital booking and payment aligns perfectly with her high digital adoption preference.' (4 positive mentions)",
+      "category": "feature",
+      "relevant_segments": [
+        "Fleet operators"
+      ],
+      "supporting_persona_ids": [
+        "persona_2",
+        "persona_6",
+        "persona_7",
+        "persona_8"
+      ],
+      "supporting_evidence_ids": [],
+      "evidence_sources": [
+        "google_trends"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "rationale": "Cited records (google_trends) provide background context but do not directly validate this specific finding.",
+      "caveats_and_assumptions": [
+        "Relative search interest on a 0-100 scale; does not represent absolute search volume.",
+        "Normalized against peak interest within the selected time window and region."
+      ],
+      "suggested_real_world_validation": "Conduct feature preference test with 10 real users from Fleet operators."
+    },
+    {
+      "finding_id": "PROMISING-5",
+      "claim_or_hypothesis": "High simulated receptivity in segment: 'Fleet operators' (Median Interest: 7.0/10)",
+      "category": "segment_alignment",
+      "relevant_segments": [
+        "Fleet operators"
+      ],
+      "supporting_persona_ids": [
+        "persona_1",
+        "persona_2",
+        "persona_3",
+        "persona_4",
+        "persona_5",
+        "persona_6",
+        "persona_7",
+        "persona_8",
+        "persona_9",
+        "persona_10"
+      ],
+      "supporting_evidence_ids": [
+        "doc_ev_plfs_77b3c1a3e34b_c0",
+        "doc_ev_reddit_8072de10e5f8_c0",
+        "doc_ev_trends_1318a18d916b_c0",
+        "doc_ev_trends_98be3cf43fcb_c0",
+        "doc_ev_trends_bbe24ab44695_c0"
+      ],
+      "evidence_sources": [],
+      "evidence_validation_status": "supported",
+      "rationale": "Affordability median: 5.0/10 | Adoption barrier median: 4.0/10",
+      "caveats_and_assumptions": [
+        "Persona sample allocation does not represent real-world segment size or market share."
+      ],
+      "suggested_real_world_validation": "Interview 8 target decision makers in Fleet operators."
+    }
+  ],
+  "what_may_not_work": [
+    {
+      "finding_id": "RISK-1",
+      "concern_or_barrier": "The reliability and user-friendliness of the 'AI-powered' system and booking app need to be proven.",
+      "barrier_category": "trust_and_reliability",
+      "relevant_segments": [
+        "Fleet operators"
+      ],
+      "reporting_persona_ids": [
+        "persona_1",
+        "persona_2",
+        "persona_3",
+        "persona_4",
+        "persona_5",
+        "persona_7",
+        "persona_9"
+      ],
+      "contradicting_or_supporting_evidence_ids": [],
+      "evidence_sources": [
+        "google_trends",
+        "plfs"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "rationale": "Cited records (google_trends, plfs) provide background context but do not directly validate this specific finding.",
+      "caveats": [
+        "Weighted average from reported gross earnings/net profit (including business losses) in PLFS 2025.",
+        "Aggregate plfs record [doc_ev_plfs_77b3c1a3e34b_c0] provides demographic context but does not validate specific product intent.",
+        "Relative search interest on a 0-100 scale; does not represent absolute search volume."
+      ],
+      "suggested_mitigation_or_test": "Design an onboarding prototype addressing trust and reliability."
+    },
+    {
+      "finding_id": "RISK-2",
+      "concern_or_barrier": "The lack of specific pricing information is a major concern given Rahul's high price sensitivity and strict budget.",
+      "barrier_category": "pricing_and_affordability",
+      "relevant_segments": [
+        "Fleet operators"
+      ],
+      "reporting_persona_ids": [
+        "persona_1",
+        "persona_2",
+        "persona_3",
+        "persona_4",
+        "persona_5",
+        "persona_6"
+      ],
+      "contradicting_or_supporting_evidence_ids": [],
+      "evidence_sources": [
+        "google_trends"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "rationale": "Cited records (google_trends) provide background context but do not directly validate this specific finding.",
+      "caveats": [
+        "Relative search interest on a 0-100 scale; does not represent absolute search volume.",
+        "Normalized against peak interest within the selected time window and region."
+      ],
+      "suggested_mitigation_or_test": "Design an onboarding prototype addressing pricing and affordability."
+    },
+    {
+      "finding_id": "RISK-3",
+      "concern_or_barrier": "Brand trust is moderate, so initial adoption might require strong incentives or positive word-of-mouth.",
+      "barrier_category": "trust_and_reliability",
+      "relevant_segments": [
+        "Fleet operators"
+      ],
+      "reporting_persona_ids": [
+        "persona_1",
+        "persona_2",
+        "persona_4",
+        "persona_7",
+        "persona_8"
+      ],
+      "contradicting_or_supporting_evidence_ids": [],
+      "evidence_sources": [
+        "google_trends"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "rationale": "Cited records (google_trends) provide background context but do not directly validate this specific finding.",
+      "caveats": [
+        "Relative search interest on a 0-100 scale; does not represent absolute search volume.",
+        "Normalized against peak interest within the selected time window and region."
+      ],
+      "suggested_mitigation_or_test": "Design an onboarding prototype addressing trust and reliability."
+    },
+    {
+      "finding_id": "RISK-4",
+      "concern_or_barrier": "Specific, confirmed locations of hubs that align perfectly with his varied delivery routes.",
+      "barrier_category": "operational_constraints",
+      "relevant_segments": [
+        "Fleet operators"
+      ],
+      "reporting_persona_ids": [
+        "persona_1",
+        "persona_2",
+        "persona_4",
+        "persona_6",
+        "persona_8"
+      ],
+      "contradicting_or_supporting_evidence_ids": [],
+      "evidence_sources": [
+        "google_trends"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "rationale": "Cited records (google_trends) provide background context but do not directly validate this specific finding.",
+      "caveats": [
+        "Relative search interest on a 0-100 scale; does not represent absolute search volume.",
+        "Normalized against peak interest within the selected time window and region."
+      ],
+      "suggested_mitigation_or_test": "Design an onboarding prototype addressing operational constraints."
+    },
+    {
+      "finding_id": "RISK-5",
+      "concern_or_barrier": "Overly complex 'AI' features that do not directly translate into tangible benefits like enhanced reliability, cost savings, or simplified reporting, especially if they require significant staff training or high digital literacy.",
+      "barrier_category": "pricing_and_affordability",
+      "relevant_segments": [
+        "Fleet operators"
+      ],
+      "reporting_persona_ids": [
+        "persona_3",
+        "persona_5",
+        "persona_7",
+        "persona_9"
+      ],
+      "contradicting_or_supporting_evidence_ids": [
+        "doc_ev_plfs_77b3c1a3e34b_c0",
+        "doc_ev_trends_1318a18d916b_c0",
+        "doc_ev_trends_98be3cf43fcb_c0",
+        "doc_ev_trends_bbe24ab44695_c0"
+      ],
+      "evidence_sources": [
+        "google_trends",
+        "plfs"
+      ],
+      "evidence_validation_status": "supported",
+      "rationale": "Directly corroborated by empirical records from google_trends, plfs.",
+      "caveats": [
+        "Weighted average from reported gross earnings/net profit (including business losses) in PLFS 2025.",
+        "Relative search interest on a 0-100 scale; does not represent absolute search volume.",
+        "Normalized against peak interest within the selected time window and region."
+      ],
+      "suggested_mitigation_or_test": "Design an onboarding prototype addressing pricing and affordability."
+    },
+    {
+      "finding_id": "RISK-6",
+      "concern_or_barrier": "Guaranteed lowest charging cost (AI might optimize, but a guarantee isn't explicit).",
+      "barrier_category": "pricing_and_affordability",
+      "relevant_segments": [
+        "Fleet operators"
+      ],
+      "reporting_persona_ids": [
+        "persona_1",
+        "persona_5",
+        "persona_8"
+      ],
+      "contradicting_or_supporting_evidence_ids": [],
+      "evidence_sources": [
+        "google_trends"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "rationale": "Cited records (google_trends) provide background context but do not directly validate this specific finding.",
+      "caveats": [
+        "Relative search interest on a 0-100 scale; does not represent absolute search volume.",
+        "Normalized against peak interest within the selected time window and region."
+      ],
+      "suggested_mitigation_or_test": "Design an onboarding prototype addressing pricing and affordability."
+    }
+  ],
+  "segment_comparison": [
+    {
+      "segment_name": "Fleet operators",
+      "persona_count": 10,
+      "evaluated_personas_count": 9,
+      "median_scores": {
+        "interest": 7.0,
+        "purchase_intent": 6.0,
+        "perceived_value": 7.0,
+        "affordability": 5.0,
+        "adoption_barrier": 4.0,
+        "median_interest": 7.0,
+        "median_purchase_intent": 6.0,
+        "median_perceived_value": 7.0,
+        "median_affordability": 5.0,
+        "median_adoption_barrier": 4.0
+      },
+      "valued_features": [
+        "Mobile app for booking charging slots.",
+        "Reliable and fast charging points at dedicated hubs.",
+        "AI-powered optimization for availability and potentially cost-effective charging."
+      ],
+      "main_concerns": [
+        "The lack of specific pricing information is a major concern given Rahul's high price sensitivity and strict budget.",
+        "The actual convenience of hub locations relative to Rahul's specific delivery routes is unknown.",
+        "The reliability and user-friendliness of the 'AI-powered' system and booking app need to be proven."
+      ],
+      "affordability_and_adoption_summary": "Affordability median: 5.0/10 | Adoption barrier median: 4.0/10",
+      "relevant_evidence_ids": [
+        "doc_ev_plfs_77b3c1a3e34b_c0",
+        "doc_ev_reddit_8072de10e5f8_c0",
+        "doc_ev_trends_1318a18d916b_c0",
+        "doc_ev_trends_98be3cf43fcb_c0",
+        "doc_ev_trends_bbe24ab44695_c0"
+      ],
+      "important_evidence_gaps": [
+        "Specific pricing structure and cost per charge for the service.",
+        "Exact geographical locations of the charging hubs within Ahmedabad.",
+        "Details on the charging speed and types of chargers available at the hubs."
+      ],
+      "suggested_validation_experiment": "Qualitative interview study (N=10) focusing on Fleet operators adoption barriers."
+    }
+  ],
+  "feature_prioritization": [
+    {
+      "feature_name": "Reliable and fast charging points at dedicated hubs.",
+      "positive_mentions_count": 9,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_1",
+        "persona_2",
+        "persona_3",
+        "persona_4",
+        "persona_5",
+        "persona_6",
+        "persona_7",
+        "persona_8",
+        "persona_9"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "High Priority Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Reliable and fast charging points at dedicated hubs.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "AI-powered optimization for availability and potentially cost-effective charging.",
+      "positive_mentions_count": 6,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_1",
+        "persona_4",
+        "persona_5",
+        "persona_6",
+        "persona_7",
+        "persona_8"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "High Priority Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'AI-powered optimization for availability and potentially cost-effective charging.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Mobile app for booking charging slots.",
+      "positive_mentions_count": 5,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_1",
+        "persona_3",
+        "persona_4",
+        "persona_6",
+        "persona_9"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "High Priority Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Mobile app for booking charging slots.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Digital booking and payment aligns perfectly with her high digital adoption preference.",
+      "positive_mentions_count": 4,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_2",
+        "persona_6",
+        "persona_7",
+        "persona_8"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "High Priority Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Digital booking and payment aligns perfectly with her high digital adoption preference.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Simple and easy-to-understand payment system.",
+      "positive_mentions_count": 4,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_1",
+        "persona_2",
+        "persona_5",
+        "persona_9"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "High Priority Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Simple and easy-to-understand payment system.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Booking service can streamline logistics, reduce downtime, and improve vehicle availability.",
+      "positive_mentions_count": 3,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_3",
+        "persona_4",
+        "persona_7"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "High Priority Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Booking service can streamline logistics, reduce downtime, and improve vehicle availability.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "The service is located in Ahmedabad, making it directly relevant to Rahul's operational area.",
+      "positive_mentions_count": 3,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_1",
+        "persona_2",
+        "persona_7"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "High Priority Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'The service is located in Ahmedabad, making it directly relevant to Rahul's operational area.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Centralized hub offers convenience and efficiency for fleet operations.",
+      "positive_mentions_count": 2,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_3",
+        "persona_8"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "High Priority Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Centralized hub offers convenience and efficiency for fleet operations.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Clear, detailed, and consolidated invoicing and reporting tailored for government accounting.",
+      "positive_mentions_count": 2,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_3",
+        "persona_7"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "High Priority Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Clear, detailed, and consolidated invoicing and reporting tailored for government accounting.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Clear, physical instructions at the charging point.",
+      "positive_mentions_count": 2,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_5",
+        "persona_9"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "High Priority Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Clear, physical instructions at the charging point.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Ensures the EV is charged reliably for his son's work, which is a core need.",
+      "positive_mentions_count": 2,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_5",
+        "persona_9"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "High Priority Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Ensures the EV is charged reliably for his son's work, which is a core need.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Real-time availability and queue management.",
+      "positive_mentions_count": 2,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_2",
+        "persona_8"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "High Priority Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Real-time availability and queue management.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Support for integrating charging data with existing administrative processes (even if manual).",
+      "positive_mentions_count": 2,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_3",
+        "persona_7"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "High Priority Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Support for integrating charging data with existing administrative processes (even if manual).' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Transparent pricing with no hidden charges.",
+      "positive_mentions_count": 2,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_2",
+        "persona_5"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "High Priority Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Transparent pricing with no hidden charges.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "AI-powered suggests potential for increased reliability and efficiency, reducing unexpected charger malfunctions and downtime.",
+      "positive_mentions_count": 1,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_2"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "Secondary Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'AI-powered suggests potential for increased reliability and efficiency, reducing unexpected charger malfunctions and downtime.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Clear and professional billing.",
+      "positive_mentions_count": 1,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_4"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "Secondary Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Clear and professional billing.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Dedicated hub suggests a focused and potentially well-maintained facility.",
+      "positive_mentions_count": 1,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_9"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "Secondary Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Dedicated hub suggests a focused and potentially well-maintained facility.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Easy booking and scheduling interface.",
+      "positive_mentions_count": 1,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_8"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "Secondary Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Easy booking and scheduling interface.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Flexible payment options (e.g., per-minute, small top-ups).",
+      "positive_mentions_count": 1,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_6"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "Secondary Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Flexible payment options (e.g., per-minute, small top-ups).' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Loyalty programs or discounts for frequent users.",
+      "positive_mentions_count": 1,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_2"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "Secondary Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Loyalty programs or discounts for frequent users.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "On-site assistance for any technical issues.",
+      "positive_mentions_count": 1,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_9"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "supported",
+      "supporting_evidence_ids": [
+        "doc_ev_plfs_77b3c1a3e34b_c0",
+        "doc_ev_trends_1318a18d916b_c0",
+        "doc_ev_trends_98be3cf43fcb_c0",
+        "doc_ev_trends_bbe24ab44695_c0"
+      ],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "Secondary Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes.",
+      "suggested_next_validation_step": "Include 'On-site assistance for any technical issues.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Potential to avoid long queues at charging stations, saving official time.",
+      "positive_mentions_count": 1,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_9"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "Secondary Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Potential to avoid long queues at charging stations, saving official time.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Scalable solution for a growing fleet, future-proofing his business.",
+      "positive_mentions_count": 1,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_8"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "Secondary Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Scalable solution for a growing fleet, future-proofing his business.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Strong customer support.",
+      "positive_mentions_count": 1,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_4"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "Secondary Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Strong customer support.' in a feature-card sorting exercise with prospective users."
+    },
+    {
+      "feature_name": "Supports her need to maintain a professional image through reliable logistics.",
+      "positive_mentions_count": 1,
+      "negative_mentions_count": 0,
+      "persona_ids": [
+        "persona_4"
+      ],
+      "segment_distribution": [
+        "Fleet operators"
+      ],
+      "evidence_validation_status": "insufficient_evidence",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "priority_tier": "Secondary Candidate",
+      "main_uncertainty": "Need to test whether real users will pay for this feature or consider it baseline table stakes. External empirical evidence is currently missing.",
+      "suggested_next_validation_step": "Include 'Supports her need to maintain a professional image through reliable logistics.' in a feature-card sorting exercise with prospective users."
+    }
+  ],
+  "pricing_and_affordability": {
+    "supplied_price": null,
+    "currency": null,
+    "pricing_status": "Unresolved / Conditional: No price was specified in the business idea.",
+    "price_is_conditional": true,
+    "simulated_affordability_summary": "Simulated affordability scores reflect budget fit relative to hypothesized persona income. They do NOT establish real willingness to pay or price elasticity.",
+    "contextual_earnings_evidence": {
+      "source": "PLFS 2025 (Weighted labour survey benchmarks)",
+      "regular_salaried_avg_inr": 22638.27,
+      "self_employed_gross_avg_inr": 26330.75,
+      "limitations": "Benchmark monthly earnings context only; cannot be used to determine pricing elasticity without direct customer tests."
+    },
+    "unresolved_pricing_questions": [
+      "Product pricing is unverified; idea did not propose a concrete price point.",
+      "Willingness to pay cannot be inferred directly from aggregate census or labour statistics."
+    ],
+    "recommended_wtp_experiment": "Conduct a 4-question Van Westendorp Price Sensitivity Survey and a landing page pre-order test."
+  },
+  "evidence_traceability": [
+    {
+      "evidence_id": "doc_ev_census_07fd8a009ab4_c0",
+      "source_type": "census",
+      "source_title": "CENSUS Evidence Record [doc_ev_census_07fd8a009ab4_c0]",
+      "geography": null,
+      "observation_period": "2011",
+      "factual_summary": "Census 2011 Demographic Record: Census 2011: Population (Ahmadabad, Gujarat, Total). Geographic Scope: Ahmedabad District, Gujarat, India (district level). Observed Metric Value: 7,214,225 people. Reference Benchmark Year: 2011. Data Provenance: Prim",
+      "caveats_and_limitations": [
+        "Official Census 2011 benchmark; does not reflect subsequent population growth.",
+        "Census 2011 provides reference demographic distributions; cannot establish product purchase intent."
+      ],
+      "findings_supported": [],
+      "findings_contradicted": []
+    },
+    {
+      "evidence_id": "doc_ev_census_5980b8551290_c0",
+      "source_type": "census",
+      "source_title": "CENSUS Evidence Record [doc_ev_census_5980b8551290_c0]",
+      "geography": null,
+      "observation_period": "2011",
+      "factual_summary": "Census 2011 Demographic Record: Census 2011: Literacy Rate (Ahmadabad, Gujarat, Total). Geographic Scope: Ahmedabad District, Gujarat, India (district level). Observed Metric Value: 75.35%. Reference Benchmark Year: 2011. Data Provenance: Primary Cen",
+      "caveats_and_limitations": [
+        "Official Census 2011 benchmark.",
+        "Census 2011 provides reference demographic distributions; cannot establish product purchase intent."
+      ],
+      "findings_supported": [],
+      "findings_contradicted": []
+    },
+    {
+      "evidence_id": "doc_ev_census_8303ac3bd1d4_c0",
+      "source_type": "census",
+      "source_title": "CENSUS Evidence Record [doc_ev_census_8303ac3bd1d4_c0]",
+      "geography": null,
+      "observation_period": "2011",
+      "factual_summary": "Census 2011 Demographic Record: Census 2011: Households (Ahmadabad, Gujarat, Total). Geographic Scope: Ahmedabad District, Gujarat, India (district level). Observed Metric Value: 1,510,134 households. Reference Benchmark Year: 2011. Data Provenance: ",
+      "caveats_and_limitations": [
+        "Official Census 2011 benchmark; does not reflect subsequent household formation.",
+        "Census 2011 provides reference demographic distributions; cannot establish product purchase intent."
+      ],
+      "findings_supported": [],
+      "findings_contradicted": []
+    },
+    {
+      "evidence_id": "doc_ev_census_922b2522caff_c0",
+      "source_type": "census",
+      "source_title": "CENSUS Evidence Record [doc_ev_census_922b2522caff_c0]",
+      "geography": null,
+      "observation_period": "2011",
+      "factual_summary": "Census 2011 Demographic Record: Census 2011: Work Participation (Ahmadabad, Gujarat, Total). Geographic Scope: Ahmedabad District, Gujarat, India (district level). Observed Metric Value: 35.97%. Reference Benchmark Year: 2011. Data Provenance: Primar",
+      "caveats_and_limitations": [
+        "Census 2011 workforce definitions (Main + Marginal workers).",
+        "Census 2011 provides reference demographic distributions; cannot establish product purchase intent."
+      ],
+      "findings_supported": [],
+      "findings_contradicted": []
+    },
+    {
+      "evidence_id": "doc_ev_census_debafd2f5d6c_c0",
+      "source_type": "census",
+      "source_title": "CENSUS Evidence Record [doc_ev_census_debafd2f5d6c_c0]",
+      "geography": null,
+      "observation_period": "2011",
+      "factual_summary": "Census 2011 Demographic Record: Census 2011: Graduate & Above Education (Ahmadabad, Gujarat, Total). Geographic Scope: Ahmedabad District, Gujarat, India (district level). Observed Metric Value: 817,630 people. Reference Benchmark Year: 2011. Data Pr",
+      "caveats_and_limitations": [
+        "Census 2011 Table C-08 educational classification.",
+        "Census 2011 provides reference demographic distributions; cannot establish product purchase intent."
+      ],
+      "findings_supported": [],
+      "findings_contradicted": []
+    },
+    {
+      "evidence_id": "doc_ev_plfs_77b3c1a3e34b_c0",
+      "source_type": "plfs",
+      "source_title": "PLFS Evidence Record [doc_ev_plfs_77b3c1a3e34b_c0]",
+      "geography": null,
+      "observation_period": "2025 (Annual)",
+      "factual_summary": "PLFS 2025 Official Labour Record: PLFS 2025: Self-Employed Monthly Earnings (Ahmedabad, Gujarat). Geographic Scope: Ahmedabad District, Gujarat, India (district level). Survey Estimate: INR 26,330.75/month. Survey Reference Period: 2025 (Annual). Est",
+      "caveats_and_limitations": [
+        "Weighted average from reported gross earnings/net profit (including business losses) in PLFS 2025.",
+        "PLFS 2025 provides labour estimates subject to survey sampling limits."
+      ],
+      "findings_supported": [
+        "PROMISING-5"
+      ],
+      "findings_contradicted": [
+        "RISK-5"
+      ]
+    },
+    {
+      "evidence_id": "doc_ev_reddit_6c39479ee20c_c0",
+      "source_type": "reddit",
+      "source_title": "REDDIT Evidence Record [doc_ev_reddit_6c39479ee20c_c0]",
+      "geography": null,
+      "observation_period": null,
+      "factual_summary": "Historical Reddit Discussion Record [r/jobs]. Post Title: \"Reddit Discussion in r/jobs\". Discussion Content: \"office worker pushed work remote internet access home limited cell phone hotspots engage management fair arrangementmy wife work company due",
+      "caveats_and_limitations": [
+        "Historical dataset observation from Kaggle archive; does not represent live Reddit activity.",
+        "Keyword heuristic match; sentiment and contextual relevance may vary.",
+        "Historical social discussion dataset subject to self-selection and forum participation bias."
+      ],
+      "findings_supported": [],
+      "findings_contradicted": []
+    },
+    {
+      "evidence_id": "doc_ev_reddit_8072de10e5f8_c0",
+      "source_type": "reddit",
+      "source_title": "REDDIT Evidence Record [doc_ev_reddit_8072de10e5f8_c0]",
+      "geography": null,
+      "observation_period": null,
+      "factual_summary": "No observation text available.",
+      "caveats_and_limitations": [
+        "Historical social discussion dataset subject to self-selection and forum participation bias."
+      ],
+      "findings_supported": [
+        "PROMISING-5"
+      ],
+      "findings_contradicted": []
+    },
+    {
+      "evidence_id": "doc_ev_reddit_8e559176a205_c0",
+      "source_type": "reddit",
+      "source_title": "REDDIT Evidence Record [doc_ev_reddit_8e559176a205_c0]",
+      "geography": null,
+      "observation_period": null,
+      "factual_summary": "Historical Reddit Discussion Record [r/college]. Post Title: \"Reddit Discussion in r/college\". Discussion Content: \"people constantly claim smart kids hard time collegei feel like hear everywhere teachers people random subreddits claim basis somethin",
+      "caveats_and_limitations": [
+        "Historical dataset observation from Kaggle archive; does not represent live Reddit activity.",
+        "Keyword heuristic match; sentiment and contextual relevance may vary.",
+        "Historical social discussion dataset subject to self-selection and forum participation bias."
+      ],
+      "findings_supported": [],
+      "findings_contradicted": []
+    },
+    {
+      "evidence_id": "doc_ev_trends_1318a18d916b_c0",
+      "source_type": "google_trends",
+      "source_title": "GOOGLE_TRENDS Evidence Record [doc_ev_trends_1318a18d916b_c0]",
+      "geography": null,
+      "observation_period": null,
+      "factual_summary": "No observation text available.",
+      "caveats_and_limitations": [
+        "Google Trends reports relative search query interest, not absolute demand or purchase volume."
+      ],
+      "findings_supported": [
+        "PROMISING-5"
+      ],
+      "findings_contradicted": [
+        "RISK-5"
+      ]
+    },
+    {
+      "evidence_id": "doc_ev_trends_98be3cf43fcb_c0",
+      "source_type": "google_trends",
+      "source_title": "GOOGLE_TRENDS Evidence Record [doc_ev_trends_98be3cf43fcb_c0]",
+      "geography": null,
+      "observation_period": "2025-10-12 to 2026-10-11 (today 12-m)",
+      "factual_summary": "Google Trends Search Interest Observation for 'Ahmedabad EV charging'. Geographic Scope: Gujarat, India (state level). Time Period: 2025-10-12 to 2026-10-11 (today 12-m). Normalized Relative Search Interest: Latest score = 16.0/100. Period Average Sc",
+      "caveats_and_limitations": [
+        "Relative search interest on a 0-100 scale; does not represent absolute search volume.",
+        "Normalized against peak interest within the selected time window and region.",
+        "Google Trends reports relative search query interest, not absolute demand or purchase volume."
+      ],
+      "findings_supported": [
+        "PROMISING-5"
+      ],
+      "findings_contradicted": [
+        "RISK-5"
+      ]
+    },
+    {
+      "evidence_id": "doc_ev_trends_bbe24ab44695_c0",
+      "source_type": "google_trends",
+      "source_title": "GOOGLE_TRENDS Evidence Record [doc_ev_trends_bbe24ab44695_c0]",
+      "geography": null,
+      "observation_period": null,
+      "factual_summary": "No observation text available.",
+      "caveats_and_limitations": [
+        "Google Trends reports relative search query interest, not absolute demand or purchase volume."
+      ],
+      "findings_supported": [
+        "PROMISING-5"
+      ],
+      "findings_contradicted": [
+        "RISK-5"
+      ]
+    }
+  ],
+  "disagreement_and_uncertainty": [],
+  "evidence_coverage_audit": {
+    "total_findings_evaluated": 45,
+    "supported_count": 3,
+    "contradicted_count": 0,
+    "mixed_count": 0,
+    "insufficient_evidence_count": 42,
+    "not_applicable_count": 0,
+    "evidence_coverage_ratio": 0.07,
+    "coverage_formula_explanation": "(supported + contradicted + mixed) / max(1, total_findings). Measures data availability, NOT market viability.",
+    "sources_represented": [
+      "google_trends",
+      "plfs"
+    ],
+    "unsupported_assumptions": [
+      "The AI system will effectively deliver on its promise of optimizing charging availability and potentially reducing costs.",
+      "The charging hubs will be strategically located to be convenient for Rahul's typical delivery routes.",
+      "The booking app will be intuitive and user-friendly, requiring minimal learning curve.",
+      "That the 'AI-powered' aspect will flawlessly prevent charger malfunctions and effectively manage queues in real-world scenarios.",
+      "That the charging hubs will be strategically located on Priya's typical taxi routes within Ahmedabad."
+    ],
+    "unresolved_pricing_assumptions": [
+      "Pricing is conditional: no verified price was specified in the business idea."
+    ],
+    "important_evidence_gaps": [
+      "Specific pricing structure and cost per charge for the service.",
+      "Exact geographical locations of the charging hubs within Ahmedabad.",
+      "Details on the charging speed and types of chargers available at the hubs.",
+      "Information on competitor offerings and pricing in the Ahmedabad EV charging market.",
+      "User reviews or testimonials for similar 'AI-powered' or booking-based charging services."
+    ]
+  },
+  "recommended_experiments": [
+    {
+      "recommendation_id": "EXP-1",
+      "question_to_validate": "Do Fleet operators actively seek to replace their current workflow/solution, or does habit inertia prevail?",
+      "target_segment": "Fleet operators",
+      "strategic_rationale": "Simulated personas identified switching costs and habit inertia as major adoption barriers.",
+      "supporting_finding_ids": [
+        "RISK-1",
+        "RISK-2"
+      ],
+      "suggested_experiment_type": "Customer Discovery Interviews",
+      "measurement_metric": "Proportion of interviewees who report active frustration and recent spending on alternative solutions.",
+      "decision_rule_hypothesis": "If >= 6 of 10 interviewees report recent attempts to change solutions, proceed with workflow prototype. (Proposed threshold).",
+      "experiment_limitations": "Qualitative self-reporting bias; respondents may overstate willingness to change."
+    },
+    {
+      "recommendation_id": "EXP-2",
+      "question_to_validate": "What is the acceptable price threshold and perceived ROI for Fleet operators?",
+      "target_segment": "Fleet operators",
+      "strategic_rationale": "Pricing is currently conditional and unverified; WTP cannot be deduced from labour benchmarks.",
+      "supporting_finding_ids": [],
+      "suggested_experiment_type": "Van Westendorp Price Sensitivity Survey & Landing Page Smoke Test",
+      "measurement_metric": "Optimum Price Point (OPP) and Point of Marginal Cheapness/Expensiveness.",
+      "decision_rule_hypothesis": "Acceptable price band aligns with target unit economics. (Proposed design choice).",
+      "experiment_limitations": "Stated willingness to pay does not guarantee actual credit-card checkout."
+    },
+    {
+      "recommendation_id": "EXP-3",
+      "question_to_validate": "Does the proposed capability ('Simulated personas value: 'Reliable and fast charging points at dedicated hubs.' (9 positive mentions)') deliver sufficient perceived value to overcome switching friction?",
+      "target_segment": "Fleet operators",
+      "strategic_rationale": "Validates whether the most favored simulated feature is genuinely compelling to real prospective users.",
+      "supporting_finding_ids": [
+        "PROMISING-1"
+      ],
+      "suggested_experiment_type": "Clickable Prototype Usability Test",
+      "measurement_metric": "Task completion rate and net usability perception.",
+      "decision_rule_hypothesis": "Users successfully complete core task and verbally express willingness to adopt. (Proposed design choice).",
+      "experiment_limitations": "Clickable prototype lacks actual live integration and operational edge cases."
+    }
+  ],
+  "diagnostics": {
+    "report_id": "MVR-A4BDAB0F",
+    "has_market_analysis": true,
+    "total_personas": 10,
+    "total_evaluations": 9,
+    "status": "success",
+    "warnings": [],
+    "issues": []
+  }
+}
