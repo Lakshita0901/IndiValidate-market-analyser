@@ -1,0 +1,25 @@
+[project]
+name = "indivalidate-market-analyser"
+version = "0.1.0"
+description = "IndiValidate - AI-Powered Multi-Persona Market Validation"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "langgraph",
+    "langchain-google-genai",
+    "langchain-core",
+    "python-dotenv",
+    "pydantic",
+    "requests",
+    "pandas",
+    "pytrends",
+    "chromadb",
+    "fastapi",
+    "uvicorn",
+    "httpx",
+    "mistralai>=3.2.0",
+    "langchain-mistralai>=1.1.6",
+]
+
+[tool.vercel]
+entrypoint = "api:app"
